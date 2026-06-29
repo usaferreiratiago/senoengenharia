@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import heroImg from "@/assets/hero-construction.jpg";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Seno Engenharia — 40 anos construindo no Vale do Aço" },
