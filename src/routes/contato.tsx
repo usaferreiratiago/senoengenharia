@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
-export const Route = createFileRoute()({
+// TanStack Router espera o path da rota dentro do createFileRoute()
+export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
       { title: "Contato — Seno Engenharia" },
@@ -24,9 +25,10 @@ type FormValues = { nome: string; email: string; telefone: string; mensagem: str
 
 function Contato() {
   const { register, handleSubmit, reset, formState } = useForm<FormValues>();
+
   const onSubmit = (data: FormValues) => {
     const body = encodeURIComponent(
-      `Nome: ${data.nome}\nEmail: ${data.email}\nTelefone: ${data.telefone}\n\n${data.mensagem}`,
+      `Nome: ${data.nome}\nEmail: ${data.email}\nTelefone: ${data.telefone}\n\nMENSAGEM:\n${data.mensagem}`,
     );
     window.location.href = `mailto:contato@senoengenharia.com.br?subject=Contato%20pelo%20site&body=${body}`;
     reset();
@@ -39,8 +41,10 @@ function Contato() {
         title="Tem um projeto em mente? Vamos conversar."
         intro="Conte um pouco sobre sua obra. Respondemos em até um dia útil."
       />
+
       <section className="py-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl grid-cols-12 gap-8 px-6 lg:px-10">
+          {/* Informações de Contato e Mapa */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,6 +65,7 @@ function Contato() {
                   </div>
                 </div>
               </a>
+
               <a
                 href="mailto:contato@senoengenharia.com.br"
                 className="group flex items-start gap-4 border-b border-border pb-6"
@@ -73,6 +78,7 @@ function Contato() {
                   </div>
                 </div>
               </a>
+
               <div className="flex items-start gap-4">
                 <MapPin className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
                 <div>
@@ -86,6 +92,7 @@ function Contato() {
                 </div>
               </div>
             </div>
+
             <div className="aspect-4/3 w-full overflow-hidden border border-border">
               <iframe
                 title="Localização Seno Engenharia"
@@ -99,6 +106,7 @@ function Contato() {
             </div>
           </motion.div>
 
+          {/* Formulário */}
           <motion.form
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -109,22 +117,35 @@ function Contato() {
           >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Field label="Nome" error={formState.errors.nome?.message}>
-                <input {...register("nome", { required: "Informe seu nome" })} className="field" />
+                <input
+                  type="text"
+                  {...register("nome", { required: "Informe seu nome" })}
+                  className="field"
+                />
               </Field>
               <Field label="Telefone" error={formState.errors.telefone?.message}>
                 <input
+                  type="tel"
                   {...register("telefone", { required: "Informe um telefone" })}
                   className="field"
                 />
               </Field>
             </div>
+
             <Field label="E-mail" error={formState.errors.email?.message}>
               <input
                 type="email"
-                {...register("email", { required: "Informe seu e-mail" })}
+                {...register("email", {
+                  required: "Informe seu e-mail",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "E-mail inválido",
+                  },
+                })}
                 className="field"
               />
             </Field>
+
             <Field label="Sobre seu projeto" error={formState.errors.mensagem?.message}>
               <textarea
                 rows={6}
@@ -132,6 +153,7 @@ function Contato() {
                 className="field resize-none"
               />
             </Field>
+
             <button
               type="submit"
               className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-ink px-6 py-4 text-sm font-medium text-primary-foreground transition hover:bg-terracotta md:w-auto"
@@ -146,15 +168,13 @@ function Contato() {
   );
 }
 
-function Field({
-  label,
-  error,
-  children,
-}: {
+interface FieldProps {
   label: string;
   error?: string;
   children: React.ReactNode;
-}) {
+}
+
+function Field({ label, error, children }: FieldProps) {
   return (
     <label className="block">
       <span className="mb-2 block text-xs uppercase tracking-widest text-stone">{label}</span>
