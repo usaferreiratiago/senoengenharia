@@ -96,7 +96,7 @@ function Contato() {
               {/* Ajustado: Removida a classe 'grayscale' para exibir o mapa com suas cores originais */}
               <iframe
                 title="Localização Seno Engenharia"
-                src="https://www.google.com/maps?q=Coronel+Fabriciano,+MG&output=embed"
+                src="https://www.google.com/local/place/fid/0xa55425b3f4f919:0xf497430444e198e9/photosphere?iu=https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid%3DVO0yXMQBgX9J8VThEAqXxA%26cb_client%3Dsearch.gws-prod.gps%26yaw%3D44.9016%26pitch%3D0%26thumbfov%3D100%26w%3D0%26h%3D0&ik=CAISFlZPMHlYTVFCZ1g5SjhWVGhFQXFYeEE%3D&sa=X&ved=2ahUKEwjn3faqia2VAxU2JbkGHXL7AvYQpx96BAgZEAQ"
                 width="100%"
                 height="100%"
                 loading="lazy"
