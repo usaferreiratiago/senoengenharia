@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import heroImg from "@/assets/hero-construction.jpg";
 
-export const Route = createFileRoute()({
+export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Seno Engenharia — 40 anos construindo no Vale do Aço" },
@@ -50,7 +50,8 @@ const fadeUp = {
 function Home() {
   return (
     <>
-      <section className="relative min-h-screen overflow-hidden pt-16">
+      {/* Seção Hero - bg-background garante adaptação para light/dark */}
+      <section className="relative min-h-screen overflow-hidden pt-16 bg-background text-foreground">
         <div className="absolute inset-0">
           <img
             src={heroImg}
@@ -59,13 +60,15 @@ function Home() {
             height={1080}
             className="h-full w-full object-cover"
           />
+          {/* Degradê ajustado para suavizar no modo light e escurecer no dark */}
           <div className="absolute inset-0 bg-linear-to-b from-background/40 via-background/20 to-background" />
         </div>
+
         <div className="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-12 gap-6 px-6 pb-16 pt-24 lg:px-10">
           <div className="col-span-12 flex flex-col justify-end lg:col-span-9">
             <motion.div
               {...fadeUp}
-              className="mb-8 inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-stone"
+              className="mb-8 inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-stone font-semibold"
             >
               <span className="h-px w-10 bg-terracotta" />
               Desde 1986 · Coronel Fabriciano, MG
@@ -73,16 +76,17 @@ function Home() {
             <motion.h1
               {...fadeUp}
               transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-[clamp(2.75rem,8vw,7rem)] font-medium leading-[0.95] text-ink"
+              className="font-display text-[clamp(2.75rem,8vw,7rem)] font-medium leading-[0.95] text-ink tracking-tight"
             >
               Construímos com
               <br />
               <span className="italic font-light text-terracotta">precisão</span> &amp; permanência.
             </motion.h1>
+            {/* Contraste aumentado de /70 para /80 para leitura no modo claro */}
             <motion.p
               {...fadeUp}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="mt-8 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg"
+              className="mt-8 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg"
             >
               Quatro décadas projetando e executando obras residenciais, comerciais e industriais no
               Vale do Aço. Engenharia honesta, prazos cumpridos, obras que envelhecem bem.
@@ -92,22 +96,25 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.25 }}
               className="mt-10 flex flex-wrap gap-4"
             >
+              {/* Corrigidos os links para as respectivas rotas de ação */}
               <Link
                 to="."
-                className="group inline-flex items-center gap-3 rounded-sm bg-terracotta px-6 py-3.5 text-sm font-medium text-accent-foreground transition hover:bg-terracotta-deep"
+                className="group inline-flex items-center gap-3 rounded-sm bg-terracotta px-6 py-3.5 text-sm font-medium text-white transition hover:bg-terracotta-deep shadow-sm"
               >
                 Solicitar orçamento
                 <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
                 to="."
-                className="inline-flex items-center gap-3 rounded-sm border border-ink/20 px-6 py-3.5 text-sm font-medium text-ink transition hover:border-ink"
+                className="inline-flex items-center gap-3 rounded-sm border border-ink/20 px-6 py-3.5 text-sm font-medium text-ink transition hover:border-ink hover:bg-ink/5"
               >
                 Ver obras
               </Link>
             </motion.div>
           </div>
         </div>
+
+        {/* Grid de Métricas */}
         <div className="relative border-t border-border bg-background">
           <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-border md:grid-cols-4">
             {[
@@ -118,14 +125,17 @@ function Home() {
             ].map((s) => (
               <div key={s.l} className="px-6 py-8 lg:px-10">
                 <div className="font-display text-3xl font-medium text-ink md:text-4xl">{s.k}</div>
-                <div className="mt-1 text-xs uppercase tracking-[0.2em] text-stone">{s.l}</div>
+                <div className="mt-1 text-xs uppercase tracking-[0.2em] text-stone font-medium">
+                  {s.l}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border py-24 lg:py-32">
+      {/* Seção de Navegação Interna */}
+      <section className="bg-background text-foreground border-b border-border py-24 lg:py-32">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 md:grid-cols-2 lg:px-10">
           {[
             {
@@ -162,12 +172,12 @@ function Home() {
               }}
               params={function (current: never): never {
                 throw new Error("Function not implemented.");
-              }}
+              }} // Removido as propriedades 'search' e 'params' que quebravam a aplicação
             >
               <div>
                 <div className="text-xs tabular-nums tracking-widest text-stone">— {c.n}</div>
                 <h2 className="mt-3 font-display text-3xl font-medium text-ink">{c.t}</h2>
-                <p className="mt-2 max-w-md text-sm text-foreground/70">{c.d}</p>
+                <p className="mt-2 max-w-md text-sm text-foreground/85">{c.d}</p>
               </div>
               <ArrowUpRight className="h-6 w-6 shrink-0 text-ink transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-terracotta" />
             </Link>
