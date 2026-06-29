@@ -4,7 +4,8 @@ import { Check } from "lucide-react";
 import aboutImg from "@/assets/about-blueprint.jpg";
 import { PageHeader } from "@/components/page-header";
 
-export const Route = createFileRoute()({
+// CORREÇÃO: Adicionado o path "/sobre" como argumento obrigatório
+export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
       { title: "Sobre — Seno Engenharia" },
@@ -50,7 +51,7 @@ function Sobre() {
               <strong className="text-ink font-medium">
                 Seno Engenharia Projetos Construções LTDA
               </strong>{" "}
-              nasceu em 1985 com uma convicção simples: obra boa é a que atravessa gerações. Desde
+              nasceu in 1985 com uma convicção simples: obra boa é a que atravessa gerações. Desde
               então, construímos relações tão duradouras quanto nossas estruturas.
             </p>
             <p className="text-base leading-relaxed text-foreground/70">
