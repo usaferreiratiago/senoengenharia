@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/immutability */
+/* eslint-disable react-refresh/only-export-components */
 import { createFileRoute } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -92,7 +94,7 @@ function Hero() {
     <section id="top" className="relative min-h-screen overflow-hidden pt-16">
       <div className="absolute inset-0">
         <img src={heroImg} alt="Obra em concreto da Seno Engenharia" width={1920} height={1080} className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
+        <div className="absolute inset-0 bg-linear-to-b from-background/40 via-background/20 to-background" />
       </div>
       <div className="relative mx-auto grid min-h-[calc(100vh-4rem)] max-w-7xl grid-cols-12 gap-6 px-6 pb-16 pt-24 lg:px-10">
         <div className="col-span-12 flex flex-col justify-end lg:col-span-9">
@@ -159,7 +161,7 @@ function About() {
           </div>
         </motion.div>
         <motion.div {...fadeUp} transition={{ duration: 0.8, delay: 0.1 }} className="col-span-12 space-y-6 lg:col-span-6 lg:col-start-7">
-          <img src={aboutImg} alt="Equipe Seno revisando projetos" width={1024} height={1024} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+          <img src={aboutImg} alt="Equipe Seno revisando projetos" width={1024} height={1024} loading="lazy" className="aspect-4/3 w-full object-cover" />
           <p className="text-base leading-relaxed text-foreground/75 md:text-lg">
             A <strong className="text-ink font-medium">Seno Engenharia Projetos Construções LTDA</strong> nasceu
             em Coronel Fabriciano em 1985 com uma convicção simples: obra boa é a que
@@ -262,7 +264,7 @@ function Projects() {
               className="group grid grid-cols-12 items-center gap-6 bg-background py-8 transition hover:bg-concrete/60"
             >
               <div className="col-span-12 px-4 md:col-span-5 md:px-6">
-                <img src={p.img} alt={p.title} width={1024} height={1024} loading="lazy" className="aspect-[4/3] w-full object-cover grayscale transition duration-700 group-hover:grayscale-0" />
+                <img src={p.img} alt={p.title} width={1024} height={1024} loading="lazy" className="aspect-4/3 w-full object-cover grayscale transition duration-700 group-hover:grayscale-0" />
               </div>
               <div className="col-span-12 px-4 md:col-span-1 md:px-0">
                 <div className="text-xs tabular-nums tracking-widest text-stone">0{i + 1}</div>
@@ -371,7 +373,7 @@ function Contact() {
                 </div>
               </div>
             </div>
-            <div className="aspect-[4/3] w-full overflow-hidden border border-border">
+            <div className="aspect-4/3 w-full overflow-hidden border border-border">
               <iframe
                 title="Localização Seno Engenharia"
                 src="https://www.google.com/maps?q=Coronel+Fabriciano,+MG&output=embed"
