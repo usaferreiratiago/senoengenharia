@@ -237,6 +237,7 @@ function Services() {
 }
 
 const projects = [
+  { img: heroImg, title: "Residencial Jardim das Acácias", type: "Residencial · Coronel Fabriciano", year: "2024" },
   { img: p1, title: "Residencial Jardim das Acácias", type: "Residencial · Coronel Fabriciano", year: "2024" },
   { img: p2, title: "Edifício Comercial Centro", type: "Comercial · Ipatinga", year: "2023" },
   { img: p3, title: "Galpão Industrial Vale do Aço", type: "Industrial · Timóteo", year: "2022" },
