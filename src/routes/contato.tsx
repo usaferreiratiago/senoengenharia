@@ -83,9 +83,11 @@ function Contato() {
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">Endereço</div>
                   <div className="mt-1 font-display text-xl leading-snug text-ink">
-                    Coronel Fabriciano
+                    Rua Benedito Onésimo Martins, 23
                     <br />
-                    Minas Gerais — Brasil
+                    Vila Bom Jesus — Cel. Fabriciano
+                    <br />
+                    MG — CEP 35170-123
                   </div>
                   <div className="mt-2 text-sm text-foreground/60">CNPJ 20.853.842/0001-01</div>
                 </div>
@@ -93,10 +95,10 @@ function Contato() {
             </div>
 
             <div className="aspect-4/3 w-full overflow-hidden border border-border">
-              {/* Ajustado: URL convertida para o formato de incorporação interativa do Street View correspondente ao link informado */}
+              {/* Ajustado: Link de incorporação oficial apontando exatamente para o endereço fornecido */}
               <iframe
                 title="Localização Seno Engenharia"
-                src="http://googleusercontent.com/maps.google.com/2"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.522295624792!2d-42.6310237!3d-19.5192305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab55425b3f4f919%3A0xf497430444e198e9!2sR.%20Benedito%20On%C3%A9simo%20Martins%2C%2023%20-%20Vila%20Bom%20Jesus%2C%20Coronel%20Fabriciano%20-%20MG%2C%2035170-123!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 loading="lazy"
