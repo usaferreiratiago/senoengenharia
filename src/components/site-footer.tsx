@@ -8,7 +8,7 @@ export function SiteFooter() {
           <div>
             <div className="flex items-baseline gap-3">
               <span className="font-display text-lg font-semibold text-ink">SENO</span>
-              <span className="text-xs uppercase tracking-[0.25em] text-stone">Engenharia · Desde 1985</span>
+              <span className="text-xs uppercase tracking-[0.25em] text-stone">Engenharia · Desde 1986</span>
             </div>
             <p className="mt-4 max-w-xs text-sm text-foreground/60">
               Projetos e construções no Vale do Aço — Coronel Fabriciano/MG.
