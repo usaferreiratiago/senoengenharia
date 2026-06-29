@@ -1,12 +1,9 @@
-import { BrowserRouter } from "react-router-dom";
-import RoutesApp from "./routes";
+/* eslint-disable prettier/prettier */
+import { RouterProvider } from "@tanstack/react-router";
+import { router } from "./router";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <RoutesApp />
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
