@@ -60,9 +60,12 @@ function Servicos() {
         title="Do desenho à entrega das chaves."
         intro="Soluções integradas em engenharia. Você fala com uma equipe só, do primeiro risco à última camada de tinta."
       />
-      <section className="bg-concrete/40 py-20 lg:py-28">
+
+      {/* Seção com fundo cinza claro sutil (bg-zinc-50) */}
+      <section className="bg-zinc-50 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+          {/* Grid com bordas finas e nítidas para o modo claro */}
+          <div className="grid grid-cols-1 gap-px overflow-hidden border border-zinc-200 bg-zinc-200 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <motion.div
                 key={s.title}
@@ -70,16 +73,22 @@ function Servicos() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group relative bg-background p-8 transition hover:bg-ink lg:p-10"
+                className="group relative bg-white p-8 transition-all duration-300 hover:shadow-md hover:z-10 lg:p-10"
               >
-                <s.icon className="h-8 w-8 text-terracotta" strokeWidth={1.4} />
-                <h3 className="mt-8 font-display text-xl font-medium text-ink transition group-hover:text-background">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/70 transition group-hover:text-background/70">
-                  {s.desc}
-                </p>
-                <div className="mt-8 text-xs tabular-nums tracking-widest text-stone transition group-hover:text-background/40">
+                {/* Ícone com destaque terracota/laranja sofisticado */}
+                <s.icon
+                  className="h-8 w-8 text-amber-700 transition-transform duration-300 group-hover:scale-110"
+                  strokeWidth={1.4}
+                />
+
+                {/* Título bem visível em grafite escuro */}
+                <h3 className="mt-8 font-display text-xl font-semibold text-zinc-900">{s.title}</h3>
+
+                {/* Descrição em cinza intermediário com excelente leitura */}
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">{s.desc}</p>
+
+                {/* Numeração em fonte mono espaçada e tom sutil */}
+                <div className="mt-8 text-xs tabular-nums tracking-widest text-zinc-400 font-mono">
                   0{i + 1}
                 </div>
               </motion.div>
