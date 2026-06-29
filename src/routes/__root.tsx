@@ -1,27 +1,21 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  Outlet,
-  Link,
-  createRootRouteWithContext,
-  useRouter,
-  HeadContent,
-  Scripts,
-} from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
-
-import appCss from "../index.css?url";
+import { Outlet, Link, createRootRouteWithContext, useRouter } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 /**
- * 404
+ * 404 - Página não encontrada
  */
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold">404</h1>
-        <p className="mt-2 text-sm">Página não encontrada</p>
-        <Link to="/" className="mt-6 inline-block underline">
-          Voltar
+        <h1 className="text-7xl font-bold font-display text-ink">404</h1>
+        <p className="mt-2 text-sm text-foreground/70">Página não encontrada</p>
+        <Link
+          to="/"
+          className="mt-6 inline-block text-sm font-medium text-terracotta underline hover:text-terracotta-deep"
+        >
+          Voltar para o início
         </Link>
       </div>
     </div>
@@ -29,23 +23,24 @@ function NotFoundComponent() {
 }
 
 /**
- * Error Boundary
+ * Error Boundary - Fallback de erros catastróficos
  */
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   useEffect(() => {
-    reportLovableError(error, {
-      boundary: "tanstack_root_error_component",
-    });
+    console.error("Erro capturado no Root:", error);
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="text-center">
-        <h1>Erro inesperado</h1>
-
+        <h1 className="text-2xl font-medium text-ink font-display">Erro inesperado</h1>
+        <p className="mt-2 text-sm text-foreground/70 mb-6">
+          Ocorreu um problema ao carregar este trecho da aplicação.
+        </p>
         <button
+          className="rounded-sm bg-terracotta px-4 py-2 text-sm font-medium text-white transition hover:bg-terracotta-deep"
           onClick={() => {
             router.invalidate();
             reset();
@@ -59,7 +54,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 /**
- * Route Context
+ * Route Context Configuration
  */
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -68,58 +63,25 @@ export const Route = createRootRouteWithContext<{
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        title: "Seno Engenharia",
-      },
-      {
-        name: "description",
-        content: "Engenharia e construção no Vale do Aço",
-      },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { title: "Seno Engenharia" },
+      { name: "description", content: "Engenharia e construção no Vale do Aço" },
     ],
   }),
-
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
 /**
- * HTML Shell
- */
-function RootShell({ children }: { children: ReactNode }) {
-  return (
-    <html lang="pt-BR">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-/**
- * App Root
+ * App Root Component
  */
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* O Outlet serve de container para as páginas (index, contato, etc.) */}
       <Outlet />
     </QueryClientProvider>
   );
-}
-
-function reportLovableError(_error: Error, _arg1: { boundary: string }) {
-  throw new Error("Function not implemented.");
 }
