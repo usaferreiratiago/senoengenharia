@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Projetos from "./pages/Projetos";
-import Servicos from "./pages/Serviços";
+import Servicos from "./pages/Servicos";
 import Contato from "./pages/Contato";
 
 export default function RoutesApp() {
@@ -12,7 +12,7 @@ export default function RoutesApp() {
       <Route path="/" element={<Home />} />
       <Route path="/sobre" element={<Sobre />} />
       <Route path="/projetos" element={<Projetos />} />
-      <Route path="/serviços" element={<Servicos />} />
+      <Route path="/servicos" element={<Servicos />} />
       <Route path="/contato" element={<Contato />} />
     </Routes>
   );
@@ -21,7 +21,7 @@ export default function RoutesApp() {
 import Home from "./pages/Home";
 import Sobre from "./pages/Sobre";
 import Projetos from "./pages/Projetos";
-import Servicos from "./pages/Serviços";
+import Servicos from "./pages/Servicos";
 import Contato from "./pages/Contato";
 
 export default function RoutesApp() {
@@ -30,7 +30,7 @@ export default function RoutesApp() {
       <Route path="/" element={<Home />} />
       <Route path="/sobre" element={<Sobre />} />
       <Route path="/projetos" element={<Projetos />} />
-      <Route path="/serviços" element={<Servicos />} />
+      <Route path="/servicos" element={<Servicos />} />
       <Route path="/contato" element={<Contato />} />
     </Routes>
   );
