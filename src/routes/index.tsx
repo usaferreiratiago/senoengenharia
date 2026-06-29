@@ -95,14 +95,14 @@ function Home() {
               className="mt-10 flex flex-wrap gap-4"
             >
               <Link
-                to="/contato"
+                to="."
                 className="group inline-flex items-center gap-3 rounded-sm bg-terracotta px-6 py-3.5 text-sm font-medium text-white transition hover:bg-terracotta-deep shadow-sm"
               >
                 Solicitar orçamento
                 <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
-                to="/obras"
+                to="."
                 className="inline-flex items-center gap-3 rounded-sm border border-ink/20 px-6 py-3.5 text-sm font-medium text-ink transition hover:border-ink hover:bg-ink/5"
               >
                 Ver obras
@@ -164,6 +164,12 @@ function Home() {
               key={c.to}
               to={c.to}
               className="group flex items-start justify-between gap-6 border-t border-border pt-8 transition hover:border-ink"
+              search={function (current: never): never {
+                throw new Error("Function not implemented.");
+              }}
+              params={function (current: never): never {
+                throw new Error("Function not implemented.");
+              }}
             >
               <div>
                 <div className="text-xs tabular-nums tracking-widest text-stone">— {c.n}</div>
