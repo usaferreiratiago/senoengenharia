@@ -19,3 +19,11 @@ export const getRouter = () => {
 
   return router;
 };
+
+// ADICIONE ESTA PARTE ABAIXO:
+// Ela registra a árvore de rotas globalmente para o TypeScript reconhecer caminhos como "/sobre"
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: ReturnType<typeof getRouter>;
+  }
+}

@@ -4,8 +4,7 @@ import { Check } from "lucide-react";
 import aboutImg from "@/assets/about-blueprint.jpg";
 import { PageHeader } from "@/components/page-header";
 
-// CORREÇÃO: Adicionado o path "/sobre" como argumento obrigatório
-export const Route = createFileRoute("/sobre")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Sobre — Seno Engenharia" },
