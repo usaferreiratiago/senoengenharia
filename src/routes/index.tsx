@@ -11,6 +11,7 @@ import {
 
 import heroImg from "@/assets/senoengenharia.png";
 import aboutImg from "@/assets/about-blueprint.jpg";
+import senoengenharia from "@/assets/senoengenharia.png";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
@@ -145,7 +146,7 @@ function Projects() {
   return (
     <section id="obras" className="py-28 border-b">
       <div className="mx-auto max-w-7xl px-6 space-y-10">
-        {[p1, p2, p3].map((img, i) => (
+        { [senoengenharia, p1, p2, p3].map((img, i) => (
           <div key={i} className="grid md:grid-cols-2 gap-6">
             <img src={img} className="aspect-4/3 object-cover" />
             <div className="flex items-center">
