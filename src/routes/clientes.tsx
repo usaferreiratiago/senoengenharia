@@ -3,11 +3,15 @@ import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
-export const Route = createFileRoute("/clientes")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Clientes — Seno Engenharia" },
-      { name: "description", content: "Depoimentos de clientes residenciais, comerciais e industriais atendidos pela Seno Engenharia." },
+      {
+        name: "description",
+        content:
+          "Depoimentos de clientes residenciais, comerciais e industriais atendidos pela Seno Engenharia.",
+      },
       { property: "og:title", content: "Clientes — Seno Engenharia" },
       { property: "og:description", content: "O que dizem de uma obra feita pela Seno." },
     ],
@@ -16,9 +20,21 @@ export const Route = createFileRoute("/clientes")({
 });
 
 const testimonials = [
-  { q: "A Seno entregou nossa fábrica três semanas antes do prazo. Em 30 anos de indústria, nunca vi obra correr tão limpa.", a: "Roberto Mendes", r: "Diretor Industrial · Vale do Aço" },
-  { q: "Construíram a casa da nossa família com um cuidado que parece raro hoje. Cada detalhe foi conversado, cada prazo cumprido.", a: "Ana Paula Resende", r: "Cliente residencial · Ipatinga" },
-  { q: "Profissionalismo do orçamento à última vistoria. Recomendo de olhos fechados para qualquer obra séria.", a: "Carlos Drummond", r: "Síndico · Coronel Fabriciano" },
+  {
+    q: "A Seno entregou nossa fábrica três semanas antes do prazo. Em 30 anos de indústria, nunca vi obra correr tão limpa.",
+    a: "Roberto Mendes",
+    r: "Diretor Industrial · Vale do Aço",
+  },
+  {
+    q: "Construíram a casa da nossa família com um cuidado que parece raro hoje. Cada detalhe foi conversado, cada prazo cumprido.",
+    a: "Ana Paula Resende",
+    r: "Cliente residencial · Ipatinga",
+  },
+  {
+    q: "Profissionalismo do orçamento à última vistoria. Recomendo de olhos fechados para qualquer obra séria.",
+    a: "Carlos Drummond",
+    r: "Síndico · Coronel Fabriciano",
+  },
 ];
 
 function Clientes() {
@@ -47,7 +63,9 @@ function Clientes() {
                 </blockquote>
                 <figcaption className="mt-10 border-t border-background/15 pt-5">
                   <div className="font-display text-base font-medium text-background">{t.a}</div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-background/50">{t.r}</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-background/50">
+                    {t.r}
+                  </div>
                 </figcaption>
               </motion.figure>
             ))}

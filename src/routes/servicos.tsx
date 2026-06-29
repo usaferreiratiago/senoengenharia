@@ -3,11 +3,15 @@ import { motion } from "framer-motion";
 import { Building2, Compass, HardHat, Hammer, ClipboardCheck, Ruler } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
-export const Route = createFileRoute("/servicos")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Serviços — Seno Engenharia" },
-      { name: "description", content: "Projetos arquitetônicos e estruturais, construção, reformas, obras industriais e gerenciamento de obras no Vale do Aço." },
+      {
+        name: "description",
+        content:
+          "Projetos arquitetônicos e estruturais, construção, reformas, obras industriais e gerenciamento de obras no Vale do Aço.",
+      },
       { property: "og:title", content: "Serviços de engenharia — Seno" },
       { property: "og:description", content: "Do desenho à entrega das chaves." },
     ],
@@ -16,12 +20,36 @@ export const Route = createFileRoute("/servicos")({
 });
 
 const services = [
-  { icon: Compass, title: "Projetos arquitetônicos", desc: "Estudo preliminar, anteprojeto e projeto executivo com foco em viabilidade e estética." },
-  { icon: Ruler, title: "Projetos estruturais", desc: "Cálculo estrutural em concreto armado, aço e fundações para todo porte de obra." },
-  { icon: Building2, title: "Construção civil", desc: "Execução completa de obras residenciais, comerciais e industriais — chave na mão." },
-  { icon: Hammer, title: "Reformas e ampliações", desc: "Reformas estruturais, retrofits e ampliações com mínimo impacto operacional." },
-  { icon: HardHat, title: "Obras industriais", desc: "Galpões, pavilhões e infraestrutura para o parque industrial do Vale do Aço." },
-  { icon: ClipboardCheck, title: "Gerenciamento de obras", desc: "Planejamento, orçamento, fiscalização e controle de qualidade." },
+  {
+    icon: Compass,
+    title: "Projetos arquitetônicos",
+    desc: "Estudo preliminar, anteprojeto e projeto executivo com foco em viabilidade e estética.",
+  },
+  {
+    icon: Ruler,
+    title: "Projetos estruturais",
+    desc: "Cálculo estrutural em concreto armado, aço e fundações para todo porte de obra.",
+  },
+  {
+    icon: Building2,
+    title: "Construção civil",
+    desc: "Execução completa de obras residenciais, comerciais e industriais — chave na mão.",
+  },
+  {
+    icon: Hammer,
+    title: "Reformas e ampliações",
+    desc: "Reformas estruturais, retrofits e ampliações com mínimo impacto operacional.",
+  },
+  {
+    icon: HardHat,
+    title: "Obras industriais",
+    desc: "Galpões, pavilhões e infraestrutura para o parque industrial do Vale do Aço.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Gerenciamento de obras",
+    desc: "Planejamento, orçamento, fiscalização e controle de qualidade.",
+  },
 ];
 
 function Servicos() {

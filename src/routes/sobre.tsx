@@ -4,11 +4,15 @@ import { Check } from "lucide-react";
 import aboutImg from "@/assets/about-blueprint.jpg";
 import { PageHeader } from "@/components/page-header";
 
-export const Route = createFileRoute("/sobre")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Sobre — Seno Engenharia" },
-      { name: "description", content: "Há 40 anos a Seno Engenharia projeta e constrói no Vale do Aço, em Coronel Fabriciano/MG." },
+      {
+        name: "description",
+        content:
+          "Há 40 anos a Seno Engenharia projeta e constrói no Vale do Aço, em Coronel Fabriciano/MG.",
+      },
       { property: "og:title", content: "Sobre a Seno Engenharia" },
       { property: "og:description", content: "40 anos de engenharia honesta no Vale do Aço." },
     ],
@@ -33,17 +37,25 @@ function Sobre() {
             transition={{ duration: 0.7 }}
             className="col-span-12 lg:col-span-6"
           >
-            <img src={aboutImg} alt="Equipe Seno revisando projetos" loading="lazy" className="aspect-[4/3] w-full object-cover" />
+            <img
+              src={aboutImg}
+              alt="Equipe Seno revisando projetos"
+              loading="lazy"
+              className="aspect-4/3 w-full object-cover"
+            />
           </motion.div>
           <div className="col-span-12 space-y-6 lg:col-span-6">
             <p className="text-base leading-relaxed text-foreground/75 md:text-lg">
-              A <strong className="text-ink font-medium">Seno Engenharia Projetos Construções LTDA</strong> nasceu
-              em 1985 com uma convicção simples: obra boa é a que atravessa gerações. Desde então,
-              construímos relações tão duradouras quanto nossas estruturas.
+              A{" "}
+              <strong className="text-ink font-medium">
+                Seno Engenharia Projetos Construções LTDA
+              </strong>{" "}
+              nasceu em 1985 com uma convicção simples: obra boa é a que atravessa gerações. Desde
+              então, construímos relações tão duradouras quanto nossas estruturas.
             </p>
             <p className="text-base leading-relaxed text-foreground/70">
-              Nossa equipe técnica acompanha cada etapa — do estudo preliminar à entrega das chaves —
-              com o rigor de quem entende que cada decisão de projeto reverbera por décadas.
+              Nossa equipe técnica acompanha cada etapa — do estudo preliminar à entrega das chaves
+              — com o rigor de quem entende que cada decisão de projeto reverbera por décadas.
             </p>
             <ul className="grid grid-cols-1 gap-3 pt-4 sm:grid-cols-2">
               {[

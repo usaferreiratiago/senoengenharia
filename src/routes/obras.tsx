@@ -6,20 +6,32 @@ import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
 import { PageHeader } from "@/components/page-header";
 
-export const Route = createFileRoute("/obras")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Obras — Seno Engenharia" },
-      { name: "description", content: "Portfólio de obras residenciais, comerciais e industriais entregues pela Seno Engenharia no Vale do Aço." },
+      {
+        name: "description",
+        content:
+          "Portfólio de obras residenciais, comerciais e industriais entregues pela Seno Engenharia no Vale do Aço.",
+      },
       { property: "og:title", content: "Obras — Seno Engenharia" },
-      { property: "og:description", content: "Portfólio que se mede em metros quadrados e décadas." },
+      {
+        property: "og:description",
+        content: "Portfólio que se mede em metros quadrados e décadas.",
+      },
     ],
   }),
   component: Obras,
 });
 
 const projects = [
-  { img: p1, title: "Residencial Jardim das Acácias", type: "Residencial · Coronel Fabriciano", year: "2024" },
+  {
+    img: p1,
+    title: "Residencial Jardim das Acácias",
+    type: "Residencial · Coronel Fabriciano",
+    year: "2024",
+  },
   { img: p2, title: "Edifício Comercial Centro", type: "Comercial · Ipatinga", year: "2023" },
   { img: p3, title: "Galpão Industrial Vale do Aço", type: "Industrial · Timóteo", year: "2022" },
 ];
@@ -45,13 +57,20 @@ function Obras() {
                 className="grid grid-cols-12 items-center gap-6 bg-background py-8"
               >
                 <div className="col-span-12 px-4 md:col-span-5 md:px-6">
-                  <img src={p.img} alt={p.title} loading="lazy" className="aspect-[4/3] w-full object-cover grayscale transition duration-700 hover:grayscale-0" />
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    loading="lazy"
+                    className="aspect-4/3 w-full object-cover grayscale transition duration-700 hover:grayscale-0"
+                  />
                 </div>
                 <div className="col-span-12 px-4 md:col-span-1 md:px-0">
                   <div className="text-xs tabular-nums tracking-widest text-stone">0{i + 1}</div>
                 </div>
                 <div className="col-span-12 px-4 md:col-span-4 md:px-0">
-                  <h3 className="font-display text-2xl font-medium text-ink md:text-3xl">{p.title}</h3>
+                  <h3 className="font-display text-2xl font-medium text-ink md:text-3xl">
+                    {p.title}
+                  </h3>
                   <div className="mt-2 text-sm text-foreground/60">{p.type}</div>
                 </div>
                 <div className="col-span-12 flex items-center justify-between gap-6 px-4 md:col-span-2 md:px-6">
