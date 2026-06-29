@@ -93,15 +93,16 @@ function Contato() {
             </div>
 
             <div className="aspect-4/3 w-full overflow-hidden border border-border">
-              {/* URL atualizada com o mapa oficial incorporado (embed) de Coronel Fabriciano */}
+              {/* Ajustado: URL convertida para o formato de incorporação interativa do Street View correspondente ao link informado */}
               <iframe
                 title="Localização Seno Engenharia"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15024.58287515082!2d-42.6358327!3d-19.5138407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab000000000000%3A0x0!2sCoronel%20Fabriciano%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
+                src="http://googleusercontent.com/maps.google.com/2"
                 width="100%"
                 height="100%"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="h-full w-full border-0"
+                allowFullScreen
               />
             </div>
           </motion.div>
