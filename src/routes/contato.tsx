@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
-// TanStack Router espera o path da rota dentro do createFileRoute()
 export const Route = createFileRoute()({
   head: () => ({
     meta: [
@@ -94,6 +93,7 @@ function Contato() {
             </div>
 
             <div className="aspect-4/3 w-full overflow-hidden border border-border">
+              {/* Ajustado: Removida a classe 'grayscale' para exibir o mapa com suas cores originais */}
               <iframe
                 title="Localização Seno Engenharia"
                 src="https://www.google.com/maps?q=Coronel+Fabriciano,+MG&output=embed"
@@ -101,7 +101,7 @@ function Contato() {
                 height="100%"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full grayscale"
+                className="h-full w-full"
               />
             </div>
           </motion.div>
