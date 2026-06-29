@@ -1,11 +1,6 @@
 @import "tw-animate-css";
 @import "@fontsource-variable/geist";
-
-/* REMOVIDO: @import "shadcn/tailwind.css"; (não existe no projeto) */
-
-@import "tailwindcss/preflight";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
