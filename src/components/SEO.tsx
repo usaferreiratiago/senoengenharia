@@ -7,7 +7,7 @@ interface SEOProps {
 
 export default function SEO({
   title,
-  description
+  description,
 }: SEOProps) {
   return (
     <Helmet>
@@ -16,6 +16,26 @@ export default function SEO({
       <meta
         name="description"
         content={description}
+      />
+
+      <meta
+        property="og:title"
+        content={title}
+      />
+
+      <meta
+        property="og:description"
+        content={description}
+      />
+
+      <meta
+        property="og:type"
+        content="website"
+      />
+
+      <meta
+        name="robots"
+        content="index, follow"
       />
     </Helmet>
   );
