@@ -1,20 +1,7 @@
+/* eslint-disable react-hooks/immutability */
+/* eslint-disable react-refresh/only-export-components */
 import { createFileRoute } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
-import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  Building2,
-  Compass,
-  HardHat,
-  Hammer,
-  ClipboardCheck,
-  Ruler,
-  Phone,
-  Mail,
-  MapPin,
-  Quote,
-  Check,
-} from "lucide-react";
 
 /**
  * ⚠️ SAFE FALLBACKS (evita crash por assets faltando)
@@ -39,12 +26,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const fadeUp = {
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.7 },
-};
 
 function Header() {
   return (
