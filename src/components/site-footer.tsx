@@ -1,5 +1,3 @@
-import { Link } from "@tanstack/react-router";
-
 export function SiteFooter() {
   return (
     <footer className="bg-background py-14">
@@ -8,18 +6,30 @@ export function SiteFooter() {
           <div>
             <div className="flex items-baseline gap-3">
               <span className="font-display text-lg font-semibold text-ink">SENO</span>
-              <span className="text-xs uppercase tracking-[0.25em] text-stone">Engenharia · Desde 1986</span>
+              <span className="text-xs uppercase tracking-[0.25em] text-stone">
+                Engenharia · Desde 1986
+              </span>
             </div>
             <p className="mt-4 max-w-xs text-sm text-foreground/60">
               Projetos e construções no Vale do Aço — Coronel Fabriciano/MG.
             </p>
           </div>
           <nav className="flex flex-col gap-2 text-sm text-foreground/70">
-            <Link to="/sobre" className="hover:text-ink">Sobre</Link>
-            <Link to="/servicos" className="hover:text-ink">Serviços</Link>
-            <Link to="/obras" className="hover:text-ink">Obras</Link>
-            <Link to="/clientes" className="hover:text-ink">Clientes</Link>
-            <Link to="/contato" className="hover:text-ink">Contato</Link>
+            <a href="/sobre" className="hover:text-ink">
+              Sobre
+            </a>
+            <a href="/servicos" className="hover:text-ink">
+              Serviços
+            </a>
+            <a href="/obras" className="hover:text-ink">
+              Obras
+            </a>
+            <a href="/clientes" className="hover:text-ink">
+              Clientes
+            </a>
+            <a href="/contato" className="hover:text-ink">
+              Contato
+            </a>
           </nav>
           <div className="text-sm text-foreground/70">
             <div>contato@senoengenharia.com.br</div>
