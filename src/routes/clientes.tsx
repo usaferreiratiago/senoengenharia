@@ -45,9 +45,9 @@ function Clientes() {
         title="O que dizem de uma obra da Seno."
         intro="Famílias, síndicos e diretores industriais que confiaram suas obras à Seno Engenharia."
       />
-      <section className="bg-ink py-20 text-background lg:py-28">
+      <section className="bg-muted py-20 text-foreground lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="grid grid-cols-1 gap-px bg-background/10 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px bg-border md:grid-cols-3">
             {testimonials.map((t, i) => (
               <motion.figure
                 key={t.a}
@@ -55,15 +55,15 @@ function Clientes() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="flex flex-col justify-between bg-ink p-8 lg:p-10"
+                className="flex flex-col justify-between bg-card p-8 lg:p-10"
               >
-                <Quote className="h-8 w-8 text-terracotta" strokeWidth={1.2} />
-                <blockquote className="mt-8 text-lg leading-relaxed text-background/90">
+                <Quote className="h-8 w-8 text-primary" strokeWidth={1.2} />
+                <blockquote className="mt-8 text-lg leading-relaxed text-foreground/90">
                   "{t.q}"
                 </blockquote>
-                <figcaption className="mt-10 border-t border-background/15 pt-5">
-                  <div className="font-display text-base font-medium text-background">{t.a}</div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-background/50">
+                <figcaption className="mt-10 border-t border-border pt-5">
+                  <div className="font-heading text-base font-medium text-foreground">{t.a}</div>
+                  <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">
                     {t.r}
                   </div>
                 </figcaption>
