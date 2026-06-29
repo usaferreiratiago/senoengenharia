@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-refresh/only-export-components */
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -33,13 +31,7 @@ function NotFoundComponent() {
 /**
  * Error Boundary
  */
-function ErrorComponent({
-  error,
-  reset,
-}: {
-  error: Error;
-  reset: () => void;
-}) {
+function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -128,6 +120,6 @@ function RootComponent() {
   );
 }
 
-function reportLovableError(_error: Error, _arg1: { boundary: string; }) {
+function reportLovableError(_error: Error, _arg1: { boundary: string }) {
   throw new Error("Function not implemented.");
 }
