@@ -5,7 +5,7 @@ import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
 // TanStack Router espera o path da rota dentro do createFileRoute()
-export const Route = createFileRoute("/contato")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Contato — Seno Engenharia" },
