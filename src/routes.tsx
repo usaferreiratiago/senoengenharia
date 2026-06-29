@@ -13,7 +13,7 @@ export default function RoutesApp() {
       <Route path="/sobre" element={<Sobre />} />
       <Route path="/contato" element={<Contato />} />
       <Route path="/projetos" element={<Projetos />} />
-      <Route path="/servicos" element={<Servicos />} />
+      <Route path="/serviços" element={<Servicos />} />
     </Routes>
   );
 }
