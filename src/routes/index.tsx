@@ -15,7 +15,7 @@ import {
   Quote,
   Check,
 } from "lucide-react";
-import heroImg from "@/assets/hero-construction.jpg";
+import heroImg from "@/assets/senoengenharia.png";
 import aboutImg from "@/assets/about-blueprint.jpg";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
