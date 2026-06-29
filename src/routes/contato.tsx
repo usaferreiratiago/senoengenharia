@@ -53,14 +53,14 @@ function Contato() {
           >
             <div className="space-y-6">
               <a
-                href="tel:+5531000000000"
+                href="tel:+55313841-1290"
                 className="group flex items-start gap-4 border-b border-border pb-6"
               >
                 <Phone className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">Telefone</div>
                   <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta">
-                    (31) 0000-0000
+                    (31) 3841-1290
                   </div>
                 </div>
               </a>
