@@ -12,7 +12,7 @@ function NotFoundComponent() {
         <h1 className="text-7xl font-bold font-display text-ink">404</h1>
         <p className="mt-2 text-sm text-foreground/70">Página não encontrada</p>
         <Link
-          to="."
+          to="/"
           className="mt-6 inline-block text-sm font-medium text-terracotta underline hover:text-terracotta-deep"
         >
           Voltar para o início

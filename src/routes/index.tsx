@@ -50,7 +50,7 @@ const fadeUp = {
 function Home() {
   return (
     <>
-      {/* Seção Hero - bg-background garante adaptação para light/dark */}
+      {/* Seção Hero */}
       <section className="relative min-h-screen overflow-hidden pt-16 bg-background text-foreground">
         <div className="absolute inset-0">
           <img
@@ -60,7 +60,6 @@ function Home() {
             height={1080}
             className="h-full w-full object-cover"
           />
-          {/* Degradê ajustado para suavizar no modo light e escurecer no dark */}
           <div className="absolute inset-0 bg-linear-to-b from-background/40 via-background/20 to-background" />
         </div>
 
@@ -82,13 +81,12 @@ function Home() {
               <br />
               <span className="italic font-light text-terracotta">precisão</span> &amp; permanência.
             </motion.h1>
-            {/* Contraste aumentado de /70 para /80 para leitura no modo claro */}
             <motion.p
               {...fadeUp}
               transition={{ duration: 0.8, delay: 0.15 }}
               className="mt-8 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg"
             >
-              Quatro décadas projetando e executando obras residenciais, comerciais e industriais no
+              Quatro décadas projetando e executing obras residenciais, comerciais e industriais no
               Vale do Aço. Engenharia honesta, prazos cumpridos, obras que envelhecem bem.
             </motion.p>
             <motion.div
@@ -96,16 +94,15 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.25 }}
               className="mt-10 flex flex-wrap gap-4"
             >
-              {/* Corrigidos os links para as respectivas rotas de ação */}
               <Link
-                to="."
+                to="/contato"
                 className="group inline-flex items-center gap-3 rounded-sm bg-terracotta px-6 py-3.5 text-sm font-medium text-white transition hover:bg-terracotta-deep shadow-sm"
               >
                 Solicitar orçamento
                 <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
-                to="."
+                to="/obras"
                 className="inline-flex items-center gap-3 rounded-sm border border-ink/20 px-6 py-3.5 text-sm font-medium text-ink transition hover:border-ink hover:bg-ink/5"
               >
                 Ver obras
@@ -167,12 +164,6 @@ function Home() {
               key={c.to}
               to={c.to}
               className="group flex items-start justify-between gap-6 border-t border-border pt-8 transition hover:border-ink"
-              search={function (current: never): never {
-                throw new Error("Function not implemented.");
-              }}
-              params={function (current: never): never {
-                throw new Error("Function not implemented.");
-              }} // Removido as propriedades 'search' e 'params' que quebravam a aplicação
             >
               <div>
                 <div className="text-xs tabular-nums tracking-widest text-stone">— {c.n}</div>
