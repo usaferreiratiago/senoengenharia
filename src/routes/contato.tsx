@@ -53,14 +53,14 @@ function Contato() {
           >
             <div className="space-y-6">
               <a
-                href="tel:+553138411290"
+                href="tel:+5531000000000"
                 className="group flex items-start gap-4 border-b border-border pb-6"
               >
                 <Phone className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">Telefone</div>
                   <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta">
-                    (31) 3841-1290
+                    (31) 0000-0000
                   </div>
                 </div>
               </a>
@@ -93,15 +93,15 @@ function Contato() {
             </div>
 
             <div className="aspect-4/3 w-full overflow-hidden border border-border">
-              {/* Ajustado: Removida a classe 'grayscale' para exibir o mapa com suas cores originais */}
+              {/* URL atualizada com o mapa oficial incorporado (embed) de Coronel Fabriciano */}
               <iframe
                 title="Localização Seno Engenharia"
-                src="https://www.google.com/local/place/fid/0xa55425b3f4f919:0xf497430444e198e9/photosphere?iu=https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid%3DVO0yXMQBgX9J8VThEAqXxA%26cb_client%3Dsearch.gws-prod.gps%26yaw%3D44.9016%26pitch%3D0%26thumbfov%3D100%26w%3D0%26h%3D0&ik=CAISFlZPMHlYTVFCZ1g5SjhWVGhFQXFYeEE%3D&sa=X&ved=2ahUKEwjn3faqia2VAxU2JbkGHXL7AvYQpx96BAgZEAQ"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15024.58287515082!2d-42.6358327!3d-19.5138407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab000000000000%3A0x0!2sCoronel%20Fabriciano%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
                 width="100%"
                 height="100%"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full"
+                className="h-full w-full border-0"
               />
             </div>
           </motion.div>
