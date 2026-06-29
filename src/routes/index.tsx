@@ -98,7 +98,7 @@ function Hero() {
         <div className="col-span-12 flex flex-col justify-end lg:col-span-9">
           <motion.div {...fadeUp} className="mb-8 inline-flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-stone">
             <span className="h-px w-10 bg-terracotta" />
-            Desde 1985 · Coronel Fabriciano, MG
+            Desde 1986 · Coronel Fabriciano, MG
           </motion.div>
           <motion.h1
             {...fadeUp}
@@ -349,7 +349,7 @@ function Contact() {
         <div className="grid grid-cols-12 gap-8">
           <motion.div {...fadeUp} className="col-span-12 space-y-8 lg:col-span-5">
             <div className="space-y-6">
-              <a href="tel:+5531000000000" className="group flex items-start gap-4 border-b border-border pb-6">
+              <a href="tel:+553138411290" className="group flex items-start gap-4 border-b border-border pb-6">
                 <Phone className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">Telefone</div>
