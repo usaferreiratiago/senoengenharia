@@ -12,8 +12,8 @@ import { PageHeader } from "@/components/page-header";
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
 
-// FIX: String da rota adicionada explicitamente para evitar o erro 404
-export const Route = createFileRoute("./funcionarios")({
+// FIX: Removido argumento inválido para createFileRoute
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Equipe — Seno Engenharia" },
