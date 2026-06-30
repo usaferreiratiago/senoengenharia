@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Building2, Compass, HardHat, Hammer, ClipboardCheck, Ruler } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
+// Importação da logo utilizando caminho relativo adequado para o Vite
+import logoBg from "@/assets/senoengenharia.png";
+
 export const Route = createFileRoute()({
   head: () => ({
     meta: [
@@ -54,18 +57,27 @@ const services = [
 
 function Servicos() {
   return (
-    <>
+    <div className="relative min-h-screen isolate">
+      {/* Marca d'água em background (fixa e sutil) */}
+      <div
+        className="pointer-events-none fixed inset-0 -z-10 bg-center bg-no-repeat opacity-[0.03] grayscale mix-blend-multiply"
+        style={{
+          backgroundImage: `url(${logoBg})`,
+          backgroundSize: "40rem", // Ajuste o tamanho da marca d'água aqui se necessário
+        }}
+      />
+
       <PageHeader
         eyebrow="— 02 / Serviços"
         title="Do desenho à entrega das chaves."
         intro="Soluções integradas em engenharia. Você fala com uma equipe só, do primeiro risco à última camada de tinta."
       />
 
-      {/* Seção com fundo cinza claro sutil (bg-zinc-50) */}
-      <section className="bg-zinc-50 py-20 lg:py-28">
+      {/* Seção com fundo cinza claro sutil transparente para revelar a marca d'água */}
+      <section className="bg-zinc-50/80 py-20 lg:py-28 backdrop-blur-[1px]">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           {/* Grid com bordas finas e nítidas para o modo claro */}
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-zinc-200 bg-zinc-200 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-px overflow-hidden border border-zinc-200 bg-zinc-200/60 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <motion.div
                 key={s.title}
@@ -73,7 +85,7 @@ function Servicos() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group relative bg-white p-8 transition-all duration-300 hover:shadow-md hover:z-10 lg:p-10"
+                className="group relative bg-white/90 p-8 transition-all duration-300 hover:shadow-md hover:z-10 lg:p-10 backdrop-blur-sm"
               >
                 {/* Ícone com destaque terracota/laranja sofisticado */}
                 <s.icon
@@ -96,6 +108,6 @@ function Servicos() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
