@@ -1,13 +1,13 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone, ArrowLeft } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
 
-export const Route = createFileRoute()({
+export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
       { title: "Contato — Seno Engenharia" },
@@ -38,21 +38,32 @@ function Contato() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
-      {/* Container de conteúdo que limita o alinhamento junto ao cabeçalho */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
-        {/* Logo fixa colorida inserida diretamente acima do PageHeader */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 flex justify-start"
-        >
-          <img
-            src={logoImg}
-            alt="Seno Engenharia Logo"
-            className="h-16 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
-          />
-        </motion.div>
+      {/* Barra superior de ações (Voltar + Logo) */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
+          {/* Botão Voltar para Tela Inicial */}
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Voltar para o início
+          </Link>
+
+          {/* Logo fixa */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-start"
+          >
+            <img
+              src={logoImg}
+              alt="Seno Engenharia Logo"
+              className="h-12 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+            />
+          </motion.div>
+        </div>
       </div>
 
       <PageHeader
@@ -74,12 +85,17 @@ function Contato() {
             <div className="space-y-6">
               <a
                 href="tel:+55313841-1290"
-                className="group flex items-start gap-4 border-b border-border pb-6"
+                className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6"
               >
-                <Phone className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
+                <Phone
+                  className="mt-1 h-5 w-5 text-orange-700 dark:text-orange-500"
+                  strokeWidth={1.5}
+                />
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-stone">Telefone</div>
-                  <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta dark:text-zinc-200">
+                  <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
+                    Telefone
+                  </div>
+                  <div className="mt-1 font-display text-xl text-zinc-900 transition group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-500">
                     (31) 3841-1290
                   </div>
                 </div>
@@ -87,36 +103,47 @@ function Contato() {
 
               <a
                 href="mailto:contato@senoengenharia.com.br"
-                className="group flex items-start gap-4 border-b border-border pb-6"
+                className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6"
               >
-                <Mail className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
+                <Mail
+                  className="mt-1 h-5 w-5 text-orange-700 dark:text-orange-500"
+                  strokeWidth={1.5}
+                />
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-stone">E-mail</div>
-                  <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta dark:text-zinc-200">
+                  <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
+                    E-mail
+                  </div>
+                  <div className="mt-1 font-display text-xl text-zinc-900 transition group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-500 break-all">
                     contato@senoengenharia.com.br
                   </div>
                 </div>
               </a>
 
               <div className="flex items-start gap-4">
-                <MapPin className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
+                <MapPin
+                  className="mt-1 h-5 w-5 text-orange-700 dark:text-orange-500"
+                  strokeWidth={1.5}
+                />
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-stone">Endereço</div>
-                  <div className="mt-1 font-display text-xl leading-snug text-ink dark:text-zinc-200">
+                  <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
+                    Endereço
+                  </div>
+                  <div className="mt-1 font-display text-xl leading-snug text-zinc-900 dark:text-zinc-200">
                     Rua Benedito Onecimo Martins, 23
                     <br />
                     Vila Bom Jesus — Cel. Fabriciano
                     <br />
                     MG — CEP 35170-123
                   </div>
-                  <div className="mt-2 text-sm text-foreground/60 dark:text-zinc-400">
+                  <div className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
                     CNPJ 20.853.842/0001-01
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="aspect-4/3 w-full overflow-hidden border border-border dark:border-zinc-800">
+            {/* Container do Mapa */}
+            <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
               <iframe
                 title="Localização Seno Engenharia"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.522295624792!2d-42.6310237!3d-19.5192305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab55425b3f4f919%3A0xf497430444e198e9!2sR.%20Benedito%20On%C3%A9simo%20Martins%2C%2023%20-%20Vila%20Bom%20Jesus%2C%20Coronel%20Fabriciano%20-%20MG%2C%2035170-123!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
@@ -124,7 +151,7 @@ function Contato() {
                 height="100%"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full border-0 dark:invert dark:grayscale dark:opacity-80"
+                className="h-full w-full border-0 dark:invert dark:grayscale dark:opacity-80 transition-all duration-300"
                 allowFullScreen
               />
             </div>
@@ -137,21 +164,21 @@ function Contato() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="col-span-12 space-y-6 border border-border dark:border-zinc-800 bg-card dark:bg-zinc-900/50 p-8 lg:col-span-7 lg:p-12"
+            className="col-span-12 space-y-6 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 p-8 lg:col-span-7 lg:p-12"
           >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Field label="Nome" error={formState.errors.nome?.message}>
                 <input
                   type="text"
                   {...register("nome", { required: "Informe seu nome" })}
-                  className="field dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
+                  className="w-full rounded-sm border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-950 focus:border-orange-700 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-orange-500"
                 />
               </Field>
               <Field label="Telefone" error={formState.errors.telefone?.message}>
                 <input
                   type="tel"
                   {...register("telefone", { required: "Informe um telefone" })}
-                  className="field dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
+                  className="w-full rounded-sm border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-950 focus:border-orange-700 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-orange-500"
                 />
               </Field>
             </div>
@@ -166,7 +193,7 @@ function Contato() {
                     message: "E-mail inválido",
                   },
                 })}
-                className="field dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
+                className="w-full rounded-sm border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-950 focus:border-orange-700 focus:outline-hidden dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-orange-500"
               />
             </Field>
 
@@ -174,16 +201,17 @@ function Contato() {
               <textarea
                 rows={6}
                 {...register("mensagem", { required: "Conte um pouco do que precisa" })}
-                className="field resize-none dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
+                className="w-full rounded-sm border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-950 focus:border-orange-700 focus:outline-hidden resize-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-orange-500"
               />
             </Field>
 
+            {/* Botão de Envio adaptado para Light/Dark e hover em terracota */}
             <button
               type="submit"
-              className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-ink dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-primary-foreground dark:text-zinc-950 transition hover:bg-terracotta dark:hover:bg-terracotta dark:hover:text-white md:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-zinc-900 dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-white dark:text-zinc-950 transition-colors hover:bg-orange-700 dark:hover:bg-orange-500 dark:hover:text-white md:w-auto shadow-sm cursor-pointer"
             >
               Enviar mensagem
-              <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </motion.form>
         </div>
@@ -201,11 +229,11 @@ interface FieldProps {
 function Field({ label, error, children }: FieldProps) {
   return (
     <label className="block">
-      <span className="mb-2 block text-xs uppercase tracking-widest text-stone dark:text-zinc-400">
+      <span className="mb-2 block text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-medium">
         {label}
       </span>
       {children}
-      {error && <span className="mt-1 block text-xs text-destructive">{error}</span>}
+      {error && <span className="mt-1 block text-xs text-red-600 dark:text-red-400">{error}</span>}
     </label>
   );
 }
