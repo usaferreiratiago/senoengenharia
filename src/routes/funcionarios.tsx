@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
@@ -173,9 +173,9 @@ function Funcionarios() {
                     <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500">
                       {f.year}
                     </div>
-                    <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
+                    {/* <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
                       <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-amber-700 dark:hover:text-amber-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </motion.div>
               );
