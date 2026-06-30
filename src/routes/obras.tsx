@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Route as ContatoRoute } from "./contato";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
@@ -11,7 +10,8 @@ import { PageHeader } from "@/components/page-header";
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
 
-export const Route = createFileRoute()({
+// Rota adicionada explicitamente para resolver o erro do TS
+export const Route = createFileRoute("/obras")({
   head: () => ({
     meta: [
       { title: "Obras — Seno Engenharia" },
@@ -30,11 +30,11 @@ export const Route = createFileRoute()({
   component: Obras,
 });
 
-// Mock expandido com 20 obras para habilitar a navegação/paginação
+// Mock com a lista de obras
 const allProjects = [
   {
     img: p1,
-    title: "Residencial Jardim das Acacia 1",
+    title: "Residencial Jardim das Acácias 1",
     type: "Residencial · Coronel Fabriciano",
     year: "2026",
   },
@@ -109,21 +109,32 @@ function Obras() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
-      {/* Container de conteúdo que limita o alinhamento junto ao cabeçalho */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
-        {/* Logo fixa colorida inserida diretamente acima do PageHeader */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 flex justify-start"
-        >
-          <img
-            src={logoImg}
-            alt="Seno Engenharia Logo"
-            className="h-16 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
-          />
-        </motion.div>
+      {/* Barra superior de ações (Voltar + Logo) */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
+          {/* Botão Voltar para Tela Inicial */}
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Voltar para o início
+          </Link>
+
+          {/* Logo fixa colorida */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-start"
+          >
+            <img
+              src={logoImg}
+              alt="Seno Engenharia Logo"
+              className="h-12 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+            />
+          </motion.div>
+        </div>
       </div>
 
       <PageHeader
@@ -132,10 +143,9 @@ function Obras() {
         intro="Uma seleção de nossa história recente. Cada obra carrega o mesmo cuidado técnico, do projeto à última vistoria."
       />
 
-      {/* Suporte total para Light e Dark Mode na listagem das obras */}
       <section className="py-16 lg:py-24 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {/* Listagem de Obras com divisores adaptáveis para dark/light */}
+          {/* Listagem de Obras com divisores adaptáveis */}
           <div className="space-y-px bg-zinc-200 dark:bg-zinc-800">
             {currentProjects.map((p, i) => {
               const globalIndex = startIndex + i + 1;
@@ -148,11 +158,11 @@ function Obras() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="grid grid-cols-12 items-center gap-6 bg-white dark:bg-zinc-950 py-8"
+                  className="grid grid-cols-12 items-center gap-6 bg-white dark:bg-zinc-950 py-8 border-b border-zinc-100 dark:border-zinc-900 last:border-0"
                 >
                   {/* Coluna da Imagem */}
                   <div className="col-span-12 px-4 md:col-span-5 md:px-6">
-                    <div className="overflow-hidden rounded-sm">
+                    <div className="overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900">
                       <img
                         src={p.img}
                         alt={p.title}
@@ -164,7 +174,7 @@ function Obras() {
 
                   {/* Coluna do Número */}
                   <div className="col-span-12 px-4 md:col-span-1 md:px-0">
-                    <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
+                    <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono font-semibold">
                       {formattedIndex}
                     </div>
                   </div>
@@ -174,18 +184,19 @@ function Obras() {
                     <h3 className="font-display text-2xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl tracking-tight">
                       {p.title}
                     </h3>
-                    <div className="mt-2 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+                    <div className="mt-2 text-sm text-zinc-500 dark:text-zinc-400 font-medium dark:font-normal">
                       {p.type}
                     </div>
                   </div>
 
                   {/* Coluna do Ano e Link */}
                   <div className="col-span-12 flex items-center justify-between gap-6 px-4 md:col-span-2 md:px-6">
-                    <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500">
+                    <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500 font-mono">
                       {p.year}
                     </div>
-                    <Link to=".." aria-label="Falar sobre obra similar">
-                      <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-amber-700 dark:hover:text-amber-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
+                    {/* Alinhado os hovers para a cor terracota padrão (orange-700 / orange-500) */}
+                    <Link to="/contato" aria-label="Falar sobre obra similar">
+                      <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-orange-700 dark:hover:text-orange-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
                     </Link>
                   </div>
                 </motion.div>
@@ -193,8 +204,8 @@ function Obras() {
             })}
           </div>
 
-          {/* Componente de Navegação / Paginação adaptado para ambos os modos */}
-          <div className="mt-16 flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 pt-6">
+          {/* Paginação */}
+          <div className="mt-16 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-t border-zinc-200 dark:border-zinc-800 pt-6">
             <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
               Mostrando{" "}
               <span className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -211,23 +222,22 @@ function Obras() {
               obras
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 self-end sm:self-auto">
               <button
                 onClick={prevPage}
                 disabled={currentPage === 1}
-                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-40 disabled:hover:bg-transparent"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed"
                 aria-label="Página anterior"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
 
-              {/* Indicadores numéricos de página */}
               <div className="flex gap-1">
                 {Array.from({ length: totalPages }, (_, index) => (
                   <button
                     key={index + 1}
                     onClick={() => setCurrentPage(index + 1)}
-                    className={`h-10 w-10 text-sm font-semibold rounded-md transition ${
+                    className={`h-10 w-10 text-sm font-semibold rounded-md transition cursor-pointer ${
                       currentPage === index + 1
                         ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950"
                         : "border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900"
@@ -241,7 +251,7 @@ function Obras() {
               <button
                 onClick={nextPage}
                 disabled={currentPage === totalPages}
-                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-40 disabled:hover:bg-transparent"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed"
                 aria-label="Próxima página"
               >
                 <ChevronRight className="h-5 w-5" />
