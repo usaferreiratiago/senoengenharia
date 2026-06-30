@@ -57,13 +57,13 @@ const services = [
 
 function Servicos() {
   return (
-    <div className="relative min-h-screen isolate">
-      {/* Marca d'água em background (fixa e sutil) */}
+    <div className="relative min-h-screen isolate bg-white">
+      {/* Marca d'água em background (fixa e ajustada para modo Light) */}
       <div
-        className="pointer-events-none fixed inset-0 -z-10 bg-center bg-no-repeat opacity-[0.03] grayscale mix-blend-multiply"
+        className="pointer-events-none fixed inset-0 -z-10 bg-center bg-no-repeat opacity-[0.06] grayscale"
         style={{
           backgroundImage: `url(${logoBg})`,
-          backgroundSize: "40rem", // Ajuste o tamanho da marca d'água aqui se necessário
+          backgroundSize: "45rem", // Tamanho ideal da marca d'água
         }}
       />
 
@@ -73,11 +73,11 @@ function Servicos() {
         intro="Soluções integradas em engenharia. Você fala com uma equipe só, do primeiro risco à última camada de tinta."
       />
 
-      {/* Seção com fundo cinza claro sutil transparente para revelar a marca d'água */}
-      <section className="bg-zinc-50/80 py-20 lg:py-28 backdrop-blur-[1px]">
+      {/* Seção com fundo transparente para permitir a visualização do logo */}
+      <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {/* Grid com bordas finas e nítidas para o modo claro */}
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-zinc-200 bg-zinc-200/60 md:grid-cols-2 lg:grid-cols-3">
+          {/* Grid com linhas divisórias sutis sem cobrir o fundo */}
+          <div className="grid grid-cols-1 gap-px overflow-hidden border border-zinc-200/80 bg-zinc-200 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <motion.div
                 key={s.title}
@@ -85,7 +85,8 @@ function Servicos() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group relative bg-white/90 p-8 transition-all duration-300 hover:shadow-md hover:z-10 lg:p-10 backdrop-blur-sm"
+                // Usando bg-white/40 e backdrop-blur-md para o logo transparecer sutilmente por trás dos cards
+                className="group relative bg-white/40 p-8 transition-all duration-300 hover:bg-white/80 hover:shadow-md hover:z-10 lg:p-10 backdrop-blur-md"
               >
                 {/* Ícone com destaque terracota/laranja sofisticado */}
                 <s.icon
