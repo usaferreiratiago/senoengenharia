@@ -48,7 +48,7 @@ function Clientes() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
           {/* Botão Voltar para Tela Inicial */}
           <Link
-            to="."
+            to="/funcionarios"
             className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
