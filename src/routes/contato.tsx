@@ -37,14 +37,14 @@ function Contato() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
+    <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300 w-full overflow-x-hidden">
       {/* Barra superior de ações (Voltar + Logo) */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-8">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+        <div className="flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
           {/* Botão Voltar para Tela Inicial */}
           <Link
             to="/"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors"
+            className="group inline-flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors py-2 sm:py-0"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
             Voltar para o início
@@ -55,12 +55,12 @@ function Contato() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="flex justify-start"
+            className="flex justify-center sm:justify-start"
           >
             <img
               src={logoImg}
               alt="Seno Engenharia Logo"
-              className="h-12 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+              className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
             />
           </motion.div>
         </div>
@@ -72,8 +72,9 @@ function Contato() {
         intro="Conte um pouco sobre sua obra. Respondemos em até um dia útil."
       />
 
-      <section className="py-16 lg:py-24">
-        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-8 px-6 lg:px-10">
+      <section className="py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-12 gap-8 px-4 sm:px-6 lg:px-8">
+          
           {/* Informações de Contato e Mapa */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -85,17 +86,17 @@ function Contato() {
             <div className="space-y-6">
               <a
                 href="tel:+55313841-1290"
-                className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6"
+                className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6 w-full"
               >
                 <Phone
-                  className="mt-1 h-5 w-5 text-orange-700 dark:text-orange-500"
+                  className="mt-1 h-5 w-5 shrink-0 text-orange-700 dark:text-orange-500"
                   strokeWidth={1.5}
                 />
-                <div>
+                <div className="min-w-0">
                   <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
                     Telefone
                   </div>
-                  <div className="mt-1 font-display text-xl text-zinc-900 transition group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-500">
+                  <div className="mt-1 font-display text-lg sm:text-xl text-zinc-900 transition group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-500 truncate">
                     (31) 3841-1290
                   </div>
                 </div>
@@ -103,32 +104,32 @@ function Contato() {
 
               <a
                 href="mailto:contato@senoengenharia.com.br"
-                className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6"
+                className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6 w-full"
               >
                 <Mail
-                  className="mt-1 h-5 w-5 text-orange-700 dark:text-orange-500"
+                  className="mt-1 h-5 w-5 shrink-0 text-orange-700 dark:text-orange-500"
                   strokeWidth={1.5}
                 />
-                <div>
+                <div className="min-w-0">
                   <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
                     E-mail
                   </div>
-                  <div className="mt-1 font-display text-xl text-zinc-900 transition group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-500 break-all">
+                  <div className="mt-1 font-display text-lg sm:text-xl text-zinc-900 transition group-hover:text-orange-700 dark:text-zinc-200 dark:group-hover:text-orange-500 break-all">
                     contato@senoengenharia.com.br
                   </div>
                 </div>
               </a>
 
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 w-full">
                 <MapPin
-                  className="mt-1 h-5 w-5 text-orange-700 dark:text-orange-500"
+                  className="mt-1 h-5 w-5 shrink-0 text-orange-700 dark:text-orange-500"
                   strokeWidth={1.5}
                 />
-                <div>
+                <div className="min-w-0 break-words">
                   <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
                     Endereço
                   </div>
-                  <div className="mt-1 font-display text-xl leading-snug text-zinc-900 dark:text-zinc-200">
+                  <div className="mt-1 font-display text-lg sm:text-xl leading-snug text-zinc-900 dark:text-zinc-200">
                     Rua Benedito Onecimo Martins, 23
                     <br />
                     Vila Bom Jesus — Cel. Fabriciano
@@ -143,7 +144,7 @@ function Contato() {
             </div>
 
             {/* Container do Mapa */}
-            <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+            <div className="aspect-[4/3] w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
               <iframe
                 title="Localização Seno Engenharia"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.522295624792!2d-42.6310237!3d-19.5192305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab55425b3f4f919%3A0xf497430444e198e9!2sR.%20Benedito%20On%C3%A9simo%20Martins%2C%2023%20-%20Vila%20Bom%20Jesus%2C%20Coronel%20Fabriciano%20-%20MG%2C%2035170-123!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
@@ -164,7 +165,7 @@ function Contato() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="col-span-12 space-y-6 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 p-8 lg:col-span-7 lg:p-12"
+            className="col-span-12 space-y-6 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 p-6 sm:p-8 lg:col-span-7 lg:p-12 rounded-sm"
           >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Field label="Nome" error={formState.errors.nome?.message}>
@@ -205,7 +206,7 @@ function Contato() {
               />
             </Field>
 
-            {/* Botão de Envio adaptado para Light/Dark e hover em terracota */}
+            {/* Botão de Envio */}
             <button
               type="submit"
               className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-zinc-900 dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-white dark:text-zinc-950 transition-colors hover:bg-orange-700 dark:hover:bg-orange-500 dark:hover:text-white md:w-auto shadow-sm cursor-pointer"
@@ -214,6 +215,7 @@ function Contato() {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </motion.form>
+          
         </div>
       </section>
     </div>
