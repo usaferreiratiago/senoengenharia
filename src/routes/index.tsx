@@ -175,6 +175,12 @@ function Home() {
               t: "Funcionários",
               d: "Conheça a equipe por trás das obras da Seno Engenharia.",
             },
+            {
+              to: "/contato",
+              n: "06",
+              t: "Contato",
+              d: "Entre em contato conosco para mais informações.",
+            },
           ].map((c) => (
             <Link
               key={c.to}
