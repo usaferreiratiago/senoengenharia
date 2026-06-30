@@ -169,6 +169,12 @@ function Home() {
               t: "Clientes",
               d: "O que dizem de uma obra feita pela Seno.",
             },
+            {
+              to: "/funcionarios",
+              n: "05",
+              t: "Funcionários",
+              d: "Conheça a equipe por trás das obras da Seno.",
+            },
           ].map((c) => (
             <Link
               key={c.to}
