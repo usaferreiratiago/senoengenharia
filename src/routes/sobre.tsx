@@ -86,7 +86,7 @@ function Sobre() {
             <p className="text-base leading-relaxed text-zinc-700 dark:text-zinc-300 md:text-lg">
               A{" "}
               <strong className="text-zinc-900 font-semibold dark:text-zinc-50">
-                Seno Engenharia Projetos Construções LTDA
+                Seno Engenharia
               </strong>{" "}
               nasceu em 1986 com uma convicção simples: obra boa é a que atravessa gerações. Desde
               então, construímos relações tão duradouras quanto nossas estruturas.
