@@ -1,13 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, ArrowLeft } from "lucide-react";
 import aboutImg from "@/assets/about-blueprint.jpg";
 import { PageHeader } from "@/components/page-header";
 
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
 
-export const Route = createFileRoute()({
+// Rota adicionada explicitamente para resolver o erro do TS
+export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
       { title: "Sobre — Seno Engenharia" },
@@ -17,7 +18,7 @@ export const Route = createFileRoute()({
           "Há 40 anos a Seno Engenharia projeta e constrói no Vale do Aço, em Coronel Fabriciano/MG.",
       },
       { property: "og:title", content: "Sobre a Seno Engenharia" },
-      { property: "og:description", content: "40 anos de engenharia honesta no Vale do Aço." },
+      { property: "og:description", content: "40 anos de engineering honesta no Vale do Aço." },
     ],
   }),
   component: Sobre,
@@ -26,21 +27,32 @@ export const Route = createFileRoute()({
 function Sobre() {
   return (
     <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
-      {/* Container de conteúdo que limita o alinhamento junto ao cabeçalho */}
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
-        {/* Logo fixa colorida inserida diretamente acima do PageHeader */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 flex justify-start"
-        >
-          <img
-            src={logoImg}
-            alt="Seno Engenharia Logo"
-            className="h-16 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
-          />
-        </motion.div>
+      {/* Barra superior de ações (Voltar + Logo) */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
+          {/* Botão Voltar para Tela Inicial */}
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Voltar para o início
+          </Link>
+
+          {/* Logo fixa colorida */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-start"
+          >
+            <img
+              src={logoImg}
+              alt="Seno Engenharia Logo"
+              className="h-12 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+            />
+          </motion.div>
+        </div>
       </div>
 
       <PageHeader
@@ -50,7 +62,7 @@ function Sobre() {
       />
 
       {/* Seção com suporte completo a cores adaptáveis */}
-      <section className="bg-white dark:bg-zinc-950 text-foreground py-20 lg:py-28 transition-colors duration-300">
+      <section className="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 py-20 lg:py-28 transition-colors duration-300">
         <div className="mx-auto grid max-w-7xl grid-cols-12 gap-10 px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -66,19 +78,21 @@ function Sobre() {
               className="aspect-4/3 w-full object-cover rounded-sm shadow-sm dark:opacity-90"
             />
           </motion.div>
+
           <div className="col-span-12 space-y-6 lg:col-span-6">
-            <p className="text-base leading-relaxed text-foreground/85 dark:text-zinc-300 md:text-lg">
+            <p className="text-base leading-relaxed text-zinc-700 dark:text-zinc-300 md:text-lg">
               A{" "}
-              <strong className="text-zinc-900 font-semibold dark:text-white">
+              <strong className="text-zinc-900 font-semibold dark:text-zinc-50">
                 Seno Engenharia Projetos Construções LTDA
               </strong>{" "}
               nasceu em 1986 com uma convicção simples: obra boa é a que atravessa gerações. Desde
               então, construímos relações tão duradouras quanto nossas estruturas.
             </p>
-            <p className="text-base leading-relaxed text-foreground/80 dark:text-zinc-400">
+            <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400 font-medium dark:font-normal">
               Nossa equipe técnica acompanha cada etapa — do estudo preliminar à entrega das chaves
-              — com o rigor de quem entende que cada decision de projeto reverbera por décadas.
+              — com o rigor de quem entende que cada decisão de projeto reverbera por décadas.
             </p>
+
             <ul className="grid grid-cols-1 gap-3 pt-4 sm:grid-cols-2">
               {[
                 "CNPJ 20.853.842/0001-01",
@@ -90,9 +104,10 @@ function Sobre() {
               ].map((i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-3 text-sm text-foreground/90 dark:text-zinc-300 font-medium"
+                  className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300 font-medium"
                 >
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-terracotta dark:text-amber-500" />
+                  {/* Ícone de check usando a cor terracota/laranja consistente com as outras páginas */}
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-700 dark:text-orange-500" />
                   {i}
                 </li>
               ))}
