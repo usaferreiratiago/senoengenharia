@@ -103,7 +103,7 @@ function Contato() {
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">Endereço</div>
                   <div className="mt-1 font-display text-xl leading-snug text-ink dark:text-zinc-200">
-                    Rua Benedito Onésimo Martins, 23
+                    Rua Benedito Onecimo Martins, 23
                     <br />
                     Vila Bom Jesus — Cel. Fabriciano
                     <br />
