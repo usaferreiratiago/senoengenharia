@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
+// Importação da logo utilizando o caminho relativo do projeto
+import logoImg from "@/assets/senoengenharia.png";
+
 export const Route = createFileRoute()({
   head: () => ({
     meta: [
@@ -34,7 +37,24 @@ function Contato() {
   };
 
   return (
-    <>
+    <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
+      {/* Container de conteúdo que limita o alinhamento junto ao cabeçalho */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
+        {/* Logo fixa colorida inserida diretamente acima do PageHeader */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6 flex justify-start"
+        >
+          <img
+            src={logoImg}
+            alt="Seno Engenharia Logo"
+            className="h-16 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+          />
+        </motion.div>
+      </div>
+
       <PageHeader
         eyebrow="— 05 / Contato"
         title="Tem um projeto em mente? Vamos conversar."
@@ -59,7 +79,7 @@ function Contato() {
                 <Phone className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">Telefone</div>
-                  <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta">
+                  <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta dark:text-zinc-200">
                     (31) 3841-1290
                   </div>
                 </div>
@@ -72,7 +92,7 @@ function Contato() {
                 <Mail className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">E-mail</div>
-                  <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta">
+                  <div className="mt-1 font-display text-xl text-ink transition group-hover:text-terracotta dark:text-zinc-200">
                     contato@senoengenharia.com.br
                   </div>
                 </div>
@@ -82,20 +102,21 @@ function Contato() {
                 <MapPin className="mt-1 h-5 w-5 text-terracotta" strokeWidth={1.5} />
                 <div>
                   <div className="text-xs uppercase tracking-widest text-stone">Endereço</div>
-                  <div className="mt-1 font-display text-xl leading-snug text-ink">
+                  <div className="mt-1 font-display text-xl leading-snug text-ink dark:text-zinc-200">
                     Rua Benedito Onésimo Martins, 23
                     <br />
                     Vila Bom Jesus — Cel. Fabriciano
                     <br />
                     MG — CEP 35170-123
                   </div>
-                  <div className="mt-2 text-sm text-foreground/60">CNPJ 20.853.842/0001-01</div>
+                  <div className="mt-2 text-sm text-foreground/60 dark:text-zinc-400">
+                    CNPJ 20.853.842/0001-01
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="aspect-4/3 w-full overflow-hidden border border-border">
-              {/* Ajustado: Link de incorporação oficial apontando exatamente para o endereço fornecido */}
+            <div className="aspect-4/3 w-full overflow-hidden border border-border dark:border-zinc-800">
               <iframe
                 title="Localização Seno Engenharia"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.522295624792!2d-42.6310237!3d-19.5192305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab55425b3f4f919%3A0xf497430444e198e9!2sR.%20Benedito%20On%C3%A9simo%20Martins%2C%2023%20-%20Vila%20Bom%20Jesus%2C%20Coronel%20Fabriciano%20-%20MG%2C%2035170-123!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
@@ -103,7 +124,7 @@ function Contato() {
                 height="100%"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full border-0"
+                className="h-full w-full border-0 dark:invert dark:grayscale dark:opacity-80"
                 allowFullScreen
               />
             </div>
@@ -116,21 +137,21 @@ function Contato() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
             onSubmit={handleSubmit(onSubmit)}
-            className="col-span-12 space-y-6 border border-border bg-card p-8 lg:col-span-7 lg:p-12"
+            className="col-span-12 space-y-6 border border-border dark:border-zinc-800 bg-card dark:bg-zinc-900/50 p-8 lg:col-span-7 lg:p-12"
           >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <Field label="Nome" error={formState.errors.nome?.message}>
                 <input
                   type="text"
                   {...register("nome", { required: "Informe seu nome" })}
-                  className="field"
+                  className="field dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
                 />
               </Field>
               <Field label="Telefone" error={formState.errors.telefone?.message}>
                 <input
                   type="tel"
                   {...register("telefone", { required: "Informe um telefone" })}
-                  className="field"
+                  className="field dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
                 />
               </Field>
             </div>
@@ -145,7 +166,7 @@ function Contato() {
                     message: "E-mail inválido",
                   },
                 })}
-                className="field"
+                className="field dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
               />
             </Field>
 
@@ -153,13 +174,13 @@ function Contato() {
               <textarea
                 rows={6}
                 {...register("mensagem", { required: "Conte um pouco do que precisa" })}
-                className="field resize-none"
+                className="field resize-none dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-100"
               />
             </Field>
 
             <button
               type="submit"
-              className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-ink px-6 py-4 text-sm font-medium text-primary-foreground transition hover:bg-terracotta md:w-auto"
+              className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-ink dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-primary-foreground dark:text-zinc-950 transition hover:bg-terracotta dark:hover:bg-terracotta dark:hover:text-white md:w-auto"
             >
               Enviar mensagem
               <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -167,7 +188,7 @@ function Contato() {
           </motion.form>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
@@ -180,7 +201,9 @@ interface FieldProps {
 function Field({ label, error, children }: FieldProps) {
   return (
     <label className="block">
-      <span className="mb-2 block text-xs uppercase tracking-widest text-stone">{label}</span>
+      <span className="mb-2 block text-xs uppercase tracking-widest text-stone dark:text-zinc-400">
+        {label}
+      </span>
       {children}
       {error && <span className="mt-1 block text-xs text-destructive">{error}</span>}
     </label>
