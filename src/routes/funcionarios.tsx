@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
-// Reaproveitando os assets de imagem padrão ou substitua pelos arquivos corretos de equipe
+// Reaproveitando os assets de imagem padrão do seu projeto
 import f1 from "@/assets/f1.jpg";
 import f2 from "@/assets/f2.jpg";
 import f3 from "@/assets/f3.jpg";
@@ -14,8 +14,8 @@ import { PageHeader } from "@/components/page-header";
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
 
-// Deixe com a string da rota aqui. O TypeScript vai reclamar até fazermos o Passo 2.
-export const Route = createFileRoute()({
+// Rota adicionada explicitamente para resolver o erro do TS
+export const Route = createFileRoute("/equipe")({
   head: () => ({
     meta: [
       { title: "Equipe — Seno Engenharia" },
@@ -34,7 +34,7 @@ export const Route = createFileRoute()({
   component: Funcionarios,
 });
 
-// Mock com a lista de funcionários adaptado para o seu layout com paginação
+// Mock com a lista de funcionários
 const allStaff = [
   {
     img: f1,
@@ -100,25 +100,38 @@ function Funcionarios() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6 flex justify-start"
-        >
-          <img
-            src={logoImg}
-            alt="Seno Engenharia Logo"
-            className="h-16 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
-          />
-        </motion.div>
+      {/* Barra superior de ações (Voltar + Logo) */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
+          {/* Botão Voltar para Tela Inicial */}
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" />
+            Voltar para o início
+          </Link>
+
+          {/* Logo fixa colorida */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex justify-start"
+          >
+            <img
+              src={logoImg}
+              alt="Seno Engenharia Logo"
+              className="h-12 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+            />
+          </motion.div>
+        </div>
       </div>
 
       <PageHeader
         eyebrow="— Nossa Equipe"
         title="O capital humano por trás de cada m² construído."
-        intro="Profissionais de engenharia, arquitetura e gerenciamento focados em transformar riscos no papel em estruturas definitivas."
+        intro="Profissionais de engenharia, architecture e gerenciamento focados em transformar riscos no papel em estruturas definitivas."
       />
 
       <section className="py-16 lg:py-24 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
@@ -135,10 +148,10 @@ function Funcionarios() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="grid grid-cols-12 items-center gap-6 bg-white dark:bg-zinc-950 py-8"
+                  className="grid grid-cols-12 items-center gap-6 bg-white dark:bg-zinc-950 py-8 border-b border-zinc-100 dark:border-zinc-900 last:border-0"
                 >
                   <div className="col-span-12 px-4 md:col-span-5 md:px-6">
-                    <div className="overflow-hidden rounded-sm">
+                    <div className="overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900">
                       <img
                         src={f.img}
                         alt={`Foto de ${f.name}`}
@@ -149,7 +162,7 @@ function Funcionarios() {
                   </div>
 
                   <div className="col-span-12 px-4 md:col-span-1 md:px-0">
-                    <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
+                    <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono font-semibold">
                       {formattedIndex}
                     </div>
                   </div>
@@ -158,14 +171,17 @@ function Funcionarios() {
                     <h3 className="font-display text-2xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl tracking-tight">
                       {f.name}
                     </h3>
-                    <div className="mt-1 text-sm text-amber-700 dark:text-amber-500 font-medium">
+                    {/* Substituído por cores terracota consistentes com a home e com ótimo contraste no claro */}
+                    <div className="mt-1 text-sm text-orange-700 dark:text-orange-500 font-medium">
                       {f.role}
                     </div>
-                    <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{f.info}</div>
+                    <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400 font-medium dark:font-normal">
+                      {f.info}
+                    </div>
                   </div>
 
                   <div className="col-span-12 flex items-center justify-between gap-6 px-4 md:col-span-2 md:px-6">
-                    <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500">
+                    <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500 font-mono">
                       {f.year}
                     </div>
                   </div>
@@ -174,7 +190,8 @@ function Funcionarios() {
             })}
           </div>
 
-          <div className="mt-16 flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 pt-6">
+          {/* Paginação */}
+          <div className="mt-16 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between border-t border-zinc-200 dark:border-zinc-800 pt-6">
             <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
               Mostrando{" "}
               <span className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -191,11 +208,11 @@ function Funcionarios() {
               colaboradores
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 self-end sm:self-auto">
               <button
                 onClick={prevPage}
                 disabled={currentPage === 1}
-                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-40 disabled:hover:bg-transparent"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed"
                 aria-label="Página anterior"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -206,7 +223,7 @@ function Funcionarios() {
                   <button
                     key={index + 1}
                     onClick={() => setCurrentPage(index + 1)}
-                    className={`h-10 w-10 text-sm font-semibold rounded-md transition ${
+                    className={`h-10 w-10 text-sm font-semibold rounded-md transition cursor-pointer ${
                       currentPage === index + 1
                         ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950"
                         : "border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900"
@@ -220,7 +237,7 @@ function Funcionarios() {
               <button
                 onClick={nextPage}
                 disabled={currentPage === totalPages}
-                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-40 disabled:hover:bg-transparent"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer disabled:cursor-not-allowed"
                 aria-label="Próxima página"
               >
                 <ChevronRight className="h-5 w-5" />
