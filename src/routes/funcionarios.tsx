@@ -73,7 +73,7 @@ const allStaff = [
   },
   {
     img: f3,
-    name: "Mateus Ferreira",
+    name: "Marta Souza",
     role: "Técnico em Edificações",
     info: "Desenho Técnico e Levantamentos",
     year: "2021",
