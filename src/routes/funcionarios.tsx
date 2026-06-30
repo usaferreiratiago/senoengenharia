@@ -13,7 +13,7 @@ import { PageHeader } from "@/components/page-header";
 import logoImg from "@/assets/senoengenharia.png";
 
 // FIX: String da rota adicionada explicitamente para evitar o erro 404
-export const Route = createFileRoute("/funcionarios")({
+export const Route = createFileRoute("./funcionarios")({
   head: () => ({
     meta: [
       { title: "Equipe — Seno Engenharia" },
@@ -175,9 +175,9 @@ function Funcionarios() {
                       {f.year}
                     </div>
                     {/* FIX: Redirecionando explicitamente para a rota de contato */}
-                    <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
+                    {/* <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
                       <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-amber-700 dark:hover:text-amber-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </motion.div>
               );
