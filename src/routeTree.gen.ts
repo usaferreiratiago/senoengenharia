@@ -8,7 +8,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ClientesImport } from './routes/clientes'
 import { Route as ContatoImport } from './routes/contato'
-import { Route as FuncionariosImport } from './routes/funcionarios' // ADICIONADO
+import { Route as FuncionariosImport } from './routes/funcionarios'
 import { Route as ObrasImport } from './routes/obras'
 import { Route as ServicosImport } from './routes/servicos'
 import { Route as SobreImport } from './routes/sobre'
@@ -27,7 +27,7 @@ export const routeTree = rootRoute._addFileChildren({
   '/': IndexRoute,
   '/clientes': ClientesRoute,
   '/contato': ContatoRoute,
-  '/funcionarios': FuncionariosRoute, // ADICIONADO
+  '/funcionarios': FuncionariosRoute,
   '/obras': ObrasRoute,
   '/servicos': ServicosRoute,
   '/sobre': SobreRoute,
