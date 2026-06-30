@@ -8,6 +8,9 @@ import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
 import { PageHeader } from "@/components/page-header";
 
+// Importação da logo utilizando o caminho relativo do projeto
+import logoImg from "@/assets/senoengenharia.png";
+
 export const Route = createFileRoute()({
   head: () => ({
     meta: [
@@ -105,20 +108,36 @@ function Obras() {
   };
 
   return (
-    <>
+    <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
+      {/* Container de conteúdo que limita o alinhamento junto ao cabeçalho */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
+        {/* Logo fixa colorida inserida diretamente acima do PageHeader */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6 flex justify-start"
+        >
+          <img
+            src={logoImg}
+            alt="Seno Engenharia Logo"
+            className="h-16 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+          />
+        </motion.div>
+      </div>
+
       <PageHeader
         eyebrow="— 03 / Obras"
         title="Um portfólio que se mede em metros quadrados e décadas."
         intro="Uma seleção de nossa história recente. Cada obra carrega o mesmo cuidado técnico, do projeto à última vistoria."
       />
 
-      {/* Forçado fundo branco (bg-white) para o Modo Light */}
-      <section className="py-16 lg:py-24 bg-white text-zinc-900">
+      {/* Suporte total para Light e Dark Mode na listagem das obras */}
+      <section className="py-16 lg:py-24 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {/* Listagem de Obras com divisor sutil */}
-          <div className="space-y-px bg-zinc-200">
+          {/* Listagem de Obras com divisores adaptáveis para dark/light */}
+          <div className="space-y-px bg-zinc-200 dark:bg-zinc-800">
             {currentProjects.map((p, i) => {
-              // Calcula o índice global real do item (ex: 01, 02... até 20)
               const globalIndex = startIndex + i + 1;
               const formattedIndex = globalIndex < 10 ? `0${globalIndex}` : globalIndex;
 
@@ -129,7 +148,7 @@ function Obras() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.05 }}
-                  className="grid grid-cols-12 items-center gap-6 bg-white py-8"
+                  className="grid grid-cols-12 items-center gap-6 bg-white dark:bg-zinc-950 py-8"
                 >
                   {/* Coluna da Imagem */}
                   <div className="col-span-12 px-4 md:col-span-5 md:px-6">
@@ -145,25 +164,28 @@ function Obras() {
 
                   {/* Coluna do Número */}
                   <div className="col-span-12 px-4 md:col-span-1 md:px-0">
-                    <div className="text-xs tabular-nums tracking-widest text-zinc-400 font-mono">
+                    <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
                       {formattedIndex}
                     </div>
                   </div>
 
                   {/* Coluna do Título e Tipo */}
                   <div className="col-span-12 px-4 md:col-span-4 md:px-0">
-                    <h3 className="font-display text-2xl font-semibold text-zinc-900 md:text-3xl tracking-tight">
+                    <h3 className="font-display text-2xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl tracking-tight">
                       {p.title}
                     </h3>
-                    <div className="mt-2 text-sm text-zinc-500 font-medium">{p.type}</div>
+                    <div className="mt-2 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+                      {p.type}
+                    </div>
                   </div>
 
                   {/* Coluna do Ano e Link */}
                   <div className="col-span-12 flex items-center justify-between gap-6 px-4 md:col-span-2 md:px-6">
-                    <div className="font-display text-2xl font-medium text-zinc-400">{p.year}</div>
-                    {/* Corrigido para usar o componente Link nativo do TanStack Router */}
+                    <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500">
+                      {p.year}
+                    </div>
                     <Link to=".." aria-label="Falar sobre obra similar">
-                      <ArrowUpRight className="h-6 w-6 text-zinc-800 transition hover:text-amber-700 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
+                      <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-amber-700 dark:hover:text-amber-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
                     </Link>
                   </div>
                 </motion.div>
@@ -171,21 +193,29 @@ function Obras() {
             })}
           </div>
 
-          {/* Componente de Navegação / Paginação */}
-          <div className="mt-16 flex items-center justify-between border-t border-zinc-200 pt-6">
-            <div className="text-sm text-zinc-500 font-medium">
-              Mostrando <span className="font-semibold text-zinc-900">{startIndex + 1}</span> a{" "}
-              <span className="font-semibold text-zinc-900">
+          {/* Componente de Navegação / Paginação adaptado para ambos os modos */}
+          <div className="mt-16 flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 pt-6">
+            <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+              Mostrando{" "}
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                {startIndex + 1}
+              </span>{" "}
+              a{" "}
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
                 {Math.min(startIndex + ITEMS_PER_PAGE, allProjects.length)}
               </span>{" "}
-              de <span className="font-semibold text-zinc-900">{allProjects.length}</span> obras
+              de{" "}
+              <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+                {allProjects.length}
+              </span>{" "}
+              obras
             </div>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={prevPage}
                 disabled={currentPage === 1}
-                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 text-zinc-600 transition hover:bg-zinc-50 disabled:opacity-40 disabled:hover:bg-white"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-40 disabled:hover:bg-transparent"
                 aria-label="Página anterior"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -199,8 +229,8 @@ function Obras() {
                     onClick={() => setCurrentPage(index + 1)}
                     className={`h-10 w-10 text-sm font-semibold rounded-md transition ${
                       currentPage === index + 1
-                        ? "bg-zinc-900 text-white"
-                        : "border border-zinc-300 text-zinc-600 hover:bg-zinc-50"
+                        ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950"
+                        : "border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900"
                     }`}
                   >
                     {index + 1}
@@ -211,7 +241,7 @@ function Obras() {
               <button
                 onClick={nextPage}
                 disabled={currentPage === totalPages}
-                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 text-zinc-600 transition hover:bg-zinc-50 disabled:opacity-40 disabled:hover:bg-white"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-400 transition hover:bg-zinc-50 dark:hover:bg-zinc-900 disabled:opacity-40 disabled:hover:bg-transparent"
                 aria-label="Próxima página"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -220,6 +250,6 @@ function Obras() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
