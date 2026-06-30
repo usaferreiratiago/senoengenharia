@@ -12,8 +12,8 @@ import { PageHeader } from "@/components/page-header";
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
 
-// CORREÇÃO AQUI: Removendo argumento desnecessário do createFileRoute
-export const Route = createFileRoute()({
+// FIX: String da rota adicionada explicitamente para evitar o erro 404
+export const Route = createFileRoute("/funcionarios")({
   head: () => ({
     meta: [
       { title: "Equipe — Seno Engenharia" },
@@ -174,7 +174,8 @@ function Funcionarios() {
                     <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500">
                       {f.year}
                     </div>
-                    <Link to="." aria-label={`Entrar em contato com ${f.name}`}>
+                    {/* FIX: Redirecionando explicitamente para a rota de contato */}
+                    <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
                       <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-amber-700 dark:hover:text-amber-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
                     </Link>
                   </div>
