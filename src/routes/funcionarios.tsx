@@ -13,7 +13,7 @@ import { PageHeader } from "@/components/page-header";
 import logoImg from "@/assets/senoengenharia.png";
 
 // Deixe com a string da rota aqui. O TypeScript vai reclamar até fazermos o Passo 2.
-export const Route = createFileRoute("/funcionarios")({
+export const Route = createFileRoute()({
   head: () => ({
     meta: [
       { title: "Equipe — Seno Engenharia" },
@@ -166,9 +166,9 @@ function Funcionarios() {
                     <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500">
                       {f.year}
                     </div>
-                    <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
+                    {/* <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
                       <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-amber-700 dark:hover:text-amber-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
-                    </Link>
+                    </Link> */}
                   </div>
                 </motion.div>
               );
