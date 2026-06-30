@@ -74,7 +74,6 @@ function Contato() {
 
       <section className="py-12 sm:py-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl grid-cols-12 gap-8 px-4 sm:px-6 lg:px-8">
-          
           {/* Informações de Contato e Mapa */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -215,7 +214,6 @@ function Contato() {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </motion.form>
-          
         </div>
       </section>
     </div>

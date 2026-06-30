@@ -145,7 +145,6 @@ function Obras() {
 
       <section className="py-12 sm:py-16 lg:py-24 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          
           {/* Listagem de Obras com divisores adaptáveis */}
           <div className="space-y-px bg-zinc-100 dark:bg-zinc-900">
             {currentProjects.map((p, i) => {
@@ -258,7 +257,6 @@ function Obras() {
               </button>
             </div>
           </div>
-          
         </div>
       </section>
     </div>

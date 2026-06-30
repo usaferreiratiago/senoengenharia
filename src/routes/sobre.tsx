@@ -64,7 +64,6 @@ function Sobre() {
       {/* Seção com suporte completo a cores adaptáveis */}
       <section className="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 py-12 sm:py-20 lg:py-28 transition-colors duration-300">
         <div className="mx-auto grid max-w-7xl grid-cols-12 gap-6 sm:gap-10 px-4 sm:px-6 lg:px-8">
-          
           {/* Bloco da Imagem - Responsivo para Mobile, Tablet e Desktop */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -117,7 +116,6 @@ function Sobre() {
               ))}
             </ul>
           </div>
-
         </div>
       </section>
     </div>
