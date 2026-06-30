@@ -173,7 +173,7 @@ function Home() {
               to: "/funcionarios",
               n: "05",
               t: "Funcionários",
-              d: "Conheça a equipe por trás das obras da Seno.",
+              d: "Conheça a equipe por trás das obras da Seno Engenharia.",
             },
           ].map((c) => (
             <Link
