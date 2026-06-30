@@ -12,8 +12,8 @@ import { PageHeader } from "@/components/page-header";
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
 
-// FIX: Removido argumento inválido para createFileRoute
-export const Route = createFileRoute()({
+// Deixe com a string da rota aqui. O TypeScript vai reclamar até fazermos o Passo 2.
+export const Route = createFileRoute("/funcionarios")({
   head: () => ({
     meta: [
       { title: "Equipe — Seno Engenharia" },
@@ -98,9 +98,7 @@ function Funcionarios() {
 
   return (
     <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
-      {/* Container de conteúdo que limita o alinhamento junto ao cabeçalho */}
       <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
-        {/* Logo fixa colorida inserida diretamente acima do PageHeader */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -121,10 +119,8 @@ function Funcionarios() {
         intro="Profissionais de engenharia, arquitetura e gerenciamento focados em transformar riscos no papel em estruturas definitivas."
       />
 
-      {/* Seção principal da listagem */}
       <section className="py-16 lg:py-24 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {/* Listagem de Funcionários com divisores discretos */}
           <div className="space-y-px bg-zinc-200 dark:bg-zinc-800">
             {currentStaff.map((f, i) => {
               const globalIndex = startIndex + i + 1;
@@ -139,7 +135,6 @@ function Funcionarios() {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                   className="grid grid-cols-12 items-center gap-6 bg-white dark:bg-zinc-950 py-8"
                 >
-                  {/* Coluna da Foto do Funcionário */}
                   <div className="col-span-12 px-4 md:col-span-5 md:px-6">
                     <div className="overflow-hidden rounded-sm">
                       <img
@@ -151,14 +146,12 @@ function Funcionarios() {
                     </div>
                   </div>
 
-                  {/* Coluna do Número Identificador */}
                   <div className="col-span-12 px-4 md:col-span-1 md:px-0">
                     <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
                       {formattedIndex}
                     </div>
                   </div>
 
-                  {/* Coluna do Nome e Cargo */}
                   <div className="col-span-12 px-4 md:col-span-4 md:px-0">
                     <h3 className="font-display text-2xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl tracking-tight">
                       {f.name}
@@ -169,22 +162,19 @@ function Funcionarios() {
                     <div className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{f.info}</div>
                   </div>
 
-                  {/* Coluna do Ano de Admissão / Contato */}
                   <div className="col-span-12 flex items-center justify-between gap-6 px-4 md:col-span-2 md:px-6">
                     <div className="font-display text-2xl font-medium text-zinc-400 dark:text-zinc-500">
                       {f.year}
                     </div>
-                    {/* FIX: Redirecionando explicitamente para a rota de contato */}
-                    {/* <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
+                    <Link to="/contato" aria-label={`Entrar em contato com ${f.name}`}>
                       <ArrowUpRight className="h-6 w-6 text-zinc-800 dark:text-zinc-200 transition hover:text-amber-700 dark:hover:text-amber-500 hover:translate-x-0.5 hover:-translate-y-0.5 transform duration-200" />
-                    </Link> */}
+                    </Link>
                   </div>
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Componente de Navegação / Paginação */}
           <div className="mt-16 flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 pt-6">
             <div className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
               Mostrando{" "}
@@ -212,7 +202,6 @@ function Funcionarios() {
                 <ChevronLeft className="h-5 w-5" />
               </button>
 
-              {/* Indicadores numéricos */}
               <div className="flex gap-1">
                 {Array.from({ length: totalPages }, (_, index) => (
                   <button
