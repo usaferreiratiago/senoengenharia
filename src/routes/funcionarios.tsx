@@ -4,9 +4,10 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 // Reaproveitando os assets de imagem padrão ou substitua pelos arquivos corretos de equipe
-import f1 from "@/assets/project-1.jpg";
-import f2 from "@/assets/project-2.jpg";
-import f3 from "@/assets/project-3.jpg";
+import f1 from "@/assets/f1.jpg";
+import f2 from "@/assets/f2.jpg";
+import f3 from "@/assets/f3.jpg";
+import f4 from "@/assets/f4.jpg";
 import { PageHeader } from "@/components/page-header";
 
 // Importação da logo utilizando o caminho relativo do projeto
@@ -56,14 +57,14 @@ const allStaff = [
     year: "2015",
   },
   {
-    img: f1,
+    img: f4,
     name: "Rodrigo Costa",
     role: "Engenheiro de Campo",
     info: "Fiscalização e Controle de Qualidade",
     year: "2018",
   },
   {
-    img: f2,
+    img: f5,
     name: "Ana Beatriz Lima",
     role: "Gestora Administrativa",
     info: "Planejamento e Controladoria Geral",
