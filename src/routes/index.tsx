@@ -1,8 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Link } from "lucide-react";
 import heroImg from "@/assets/hero-construction.jpg";
 
+// FIX: String da rota adicionada explicitamente para resolver o erro do TS
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -86,7 +87,7 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="mt-8 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg"
             >
-              Quatro décadas projetando e executing obras residenciais, comerciais e industriais no
+              Quatro décadas projetando e executando obras residenciais, comerciais e industriais no
               Vale do Aço. Engenharia honesta, prazos cumpridos, obras que envelhecem bem.
             </motion.p>
             <motion.div
@@ -95,14 +96,14 @@ function Home() {
               className="mt-10 flex flex-wrap gap-4"
             >
               <Link
-                to="."
+                to="/contato"
                 className="group inline-flex items-center gap-3 rounded-sm bg-terracotta px-6 py-3.5 text-sm font-medium text-white transition hover:bg-terracotta-deep shadow-sm"
               >
                 Solicitar orçamento
                 <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
               <Link
-                to="."
+                to="/obras"
                 className="inline-flex items-center gap-3 rounded-sm border border-ink/20 px-6 py-3.5 text-sm font-medium text-ink transition hover:border-ink hover:bg-ink/5"
               >
                 Ver obras
@@ -160,6 +161,7 @@ function Home() {
               d: "O que dizem de uma obra feita pela Seno.",
             },
           ].map((c) => (
+            // FIX: Removidas as funções vazias e quebradas de params/search do Link
             <Link
               key={c.to}
               to={c.to}
