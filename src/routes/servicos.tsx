@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Building2, Compass, HardHat, Hammer, ClipboardCheck, Ruler } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
-// Importação da logo utilizando caminho relativo adequado para o Vite
-import logoBg from "@/assets/senoengenharia.png";
+// Importação da logo utilizando o caminho relativo do projeto
+import logoImg from "@/assets/senoengenharia.png";
 
 export const Route = createFileRoute()({
   head: () => ({
@@ -57,15 +57,23 @@ const services = [
 
 function Servicos() {
   return (
-    <div className="relative min-h-screen isolate bg-white">
-      {/* Marca d'água em background (fixa e ajustada para modo Light) */}
-      <div
-        className="pointer-events-none fixed inset-0 -z-10 bg-center bg-no-repeat opacity-[0.06] grayscale"
-        style={{
-          backgroundImage: `url(${logoBg})`,
-          backgroundSize: "45rem", // Tamanho ideal da marca d'água
-        }}
-      />
+    <div className="relative min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-300">
+      {/* Container de conteúdo que limita o alinhamento junto ao cabeçalho */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 pt-12">
+        {/* Logo fixa colorida inserida diretamente acima do PageHeader */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-6 flex justify-start"
+        >
+          <img
+            src={logoImg}
+            alt="Seno Engenharia Logo"
+            className="h-16 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
+          />
+        </motion.div>
+      </div>
 
       <PageHeader
         eyebrow="— 02 / Serviços"
@@ -73,11 +81,11 @@ function Servicos() {
         intro="Soluções integradas em engenharia. Você fala com uma equipe só, do primeiro risco à última camada de tinta."
       />
 
-      {/* Seção com fundo transparente para permitir a visualização do logo */}
-      <section className="py-20 lg:py-28">
+      {/* Seção de serviços adaptável para Light e Dark Mode */}
+      <section className="bg-zinc-50 dark:bg-zinc-900/40 py-20 lg:py-28 transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          {/* Grid com linhas divisórias sutis sem cobrir o fundo */}
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-zinc-200/80 bg-zinc-200 md:grid-cols-2 lg:grid-cols-3">
+          {/* Grid estruturado com cores de borda para ambos os modos */}
+          <div className="grid grid-cols-1 gap-px overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-200 dark:bg-zinc-800 md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <motion.div
                 key={s.title}
@@ -85,23 +93,26 @@ function Servicos() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
-                // Usando bg-white/40 e backdrop-blur-md para o logo transparecer sutilmente por trás dos cards
-                className="group relative bg-white/40 p-8 transition-all duration-300 hover:bg-white/80 hover:shadow-md hover:z-10 lg:p-10 backdrop-blur-md"
+                className="group relative bg-white dark:bg-zinc-900 p-8 transition-all duration-300 hover:shadow-md dark:hover:shadow-zinc-950/50 hover:z-10 lg:p-10"
               >
                 {/* Ícone com destaque terracota/laranja sofisticado */}
                 <s.icon
-                  className="h-8 w-8 text-amber-700 transition-transform duration-300 group-hover:scale-110"
+                  className="h-8 w-8 text-amber-700 dark:text-amber-500 transition-transform duration-300 group-hover:scale-110"
                   strokeWidth={1.4}
                 />
 
-                {/* Título bem visível em grafite escuro */}
-                <h3 className="mt-8 font-display text-xl font-semibold text-zinc-900">{s.title}</h3>
+                {/* Título adaptável */}
+                <h3 className="mt-8 font-display text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                  {s.title}
+                </h3>
 
-                {/* Descrição em cinza intermediário com excelente leitura */}
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600">{s.desc}</p>
+                {/* Descrição adaptável */}
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {s.desc}
+                </p>
 
-                {/* Numeração em fonte mono espaçada e tom sutil */}
-                <div className="mt-8 text-xs tabular-nums tracking-widest text-zinc-400 font-mono">
+                {/* Numeração em tom sutil */}
+                <div className="mt-8 text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
                   0{i + 1}
                 </div>
               </motion.div>
