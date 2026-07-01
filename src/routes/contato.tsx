@@ -86,7 +86,7 @@ function Contato() {
       <PageHeader
         eyebrow="— 05 / Contato"
         title="Tem um projeto em mente? Vamos conversar."
-        intro="Conte um pouco sobre sua obra. Respondemos em até um dia útil."
+        intro="Conte um pouco sobre sua obra. Respondemos em até um dois úties."
       />
 
       <section className="py-12 sm:py-16 lg:py-24">
