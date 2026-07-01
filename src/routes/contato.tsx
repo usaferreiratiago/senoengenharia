@@ -48,7 +48,7 @@ function Contato() {
       const text = encodeURIComponent(
         `Olá! Gostaria de fazer um contato comercial.\n\n*Nome:* ${data.nome}\n*E-mail:* ${data.email}\n*Telefone:* ${data.telefone}\n\n*Mensagem:* ${data.mensagem}`,
       );
-      window.open(`https://wa.me/553138411290?text=${text}`, "_blank");
+      window.open(`https://wa.me/553100000000?text=${text}`, "_blank");
       reset();
     }
   };
