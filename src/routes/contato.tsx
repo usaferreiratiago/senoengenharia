@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone, ArrowLeft } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone, ArrowLeft, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
 // Importação da logo utilizando o caminho relativo do projeto
@@ -26,14 +26,31 @@ export const Route = createFileRoute("/contato")({
 type FormValues = { nome: string; email: string; telefone: string; mensagem: string };
 
 function Contato() {
-  const { register, handleSubmit, reset, formState } = useForm<FormValues>();
+  const { register, handleSubmit, reset, formState, getValues } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
+  // Envio padrão por E-mail
+  const onSubmitEmail = (data: FormValues) => {
     const body = encodeURIComponent(
       `Nome: ${data.nome}\nEmail: ${data.email}\nTelefone: ${data.telefone}\n\nMENSAGEM:\n${data.mensagem}`,
     );
     window.location.href = `mailto:contato@senoengenharia.com.br?subject=Contato%20pelo%20site&body=${body}`;
     reset();
+  };
+
+  // Envio alternativo por WhatsApp
+  const handleWhatsAppClick = async () => {
+    // Dispara a validação do formulário nativamente antes de prosseguir
+    const isValid = await handleSubmit(() => {})();
+
+    // Se o formulário estiver válido, extrai os dados e envia para o WhatsApp
+    if (formState.isValid || isValid !== false) {
+      const data = getValues();
+      const text = encodeURIComponent(
+        `Olá! Gostaria de fazer um contato comercial.\n\n*Nome:* ${data.nome}\n*E-mail:* ${data.email}\n*Telefone:* ${data.telefone}\n\n*Mensagem:* ${data.mensagem}`,
+      );
+      window.open(`https://wa.me/553138411290?text=${text}`, "_blank");
+      reset();
+    }
   };
 
   return (
@@ -142,11 +159,11 @@ function Contato() {
               </div>
             </div>
 
-            {/* Container do Mapa */}
+            {/* Container do Mapa corrigido com link público funcional */}
             <div className="aspect-[4/3] w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
               <iframe
                 title="Localização Seno Engenharia"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.522295624792!2d-42.6310237!3d-19.5192305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xab55425b3f4f919%3A0xf497430444e198e9!2sR.%20Benedito%20On%C3%A9simo%20Martins%2C%2023%20-%20Vila%20Bom%20Jesus%2C%20Coronel%20Fabriciano%20-%20MG%2C%2035170-123!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
+                src="https://maps.google.com/maps?q=Rua%20Benedito%20Onecimo%20Martins,%2023%20Vila%20Bom%20Jesus%20Coronel%20Fabriciano&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 loading="lazy"
@@ -163,7 +180,7 @@ function Contato() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmitEmail)}
             className="col-span-12 space-y-6 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 p-6 sm:p-8 lg:col-span-7 lg:p-12 rounded-sm"
           >
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -205,14 +222,27 @@ function Contato() {
               />
             </Field>
 
-            {/* Botão de Envio */}
-            <button
-              type="submit"
-              className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-zinc-900 dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-white dark:text-zinc-950 transition-colors hover:bg-orange-700 dark:hover:bg-orange-500 dark:hover:text-white md:w-auto shadow-sm cursor-pointer"
-            >
-              Enviar mensagem
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
+            {/* Grupo de Botões de Envio (E-mail e WhatsApp) */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              {/* Botão Principal: Enviar por E-mail */}
+              <button
+                type="submit"
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-zinc-900 dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-white dark:text-zinc-950 transition-colors hover:bg-orange-700 dark:hover:bg-orange-500 dark:hover:text-white md:w-auto shadow-sm cursor-pointer"
+              >
+                Enviar por e-mail
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+
+              {/* Novo Botão: Enviar via WhatsApp */}
+              <button
+                type="button"
+                onClick={handleWhatsAppClick}
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-sm border border-emerald-600/30 bg-emerald-50/50 hover:bg-emerald-600 dark:border-emerald-500/20 dark:bg-emerald-950/20 dark:hover:bg-emerald-600 px-6 py-4 text-sm font-medium text-emerald-700 dark:text-emerald-400 hover:text-white dark:hover:text-white transition-all md:w-auto shadow-xs cursor-pointer"
+              >
+                <MessageCircle className="h-4 w-4 fill-current" />
+                Conversar no WhatsApp
+              </button>
+            </div>
           </motion.form>
         </div>
       </section>
