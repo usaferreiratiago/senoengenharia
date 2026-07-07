@@ -197,31 +197,7 @@ function Contato() {
             <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
               <iframe
                 title="Localização Insight Clínica"
-                src="https://www.google.com/maps?q=Rua+Rubens+Siqueira+Maia+599,+Coronel+Fabriciano,+MG&output=embed"
-                width="100%"
-                height="100%"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full border-0 dark:invert dark:grayscale dark:opacity-80 transition-all duration-300"
-                allowFullScreen
-              />
-            </div>
-            <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
-              <iframe
-                title="Localização Insight Clínica"
-                src="https://www.google.com/maps?q=Av.+Castelo+Branco,+762+-+Horto,+Ipatinga+-+MG,+35160-294&output=embed"
-                width="100%"
-                height="100%"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="h-full w-full border-0 dark:invert dark:grayscale dark:opacity-80 transition-all duration-300"
-                allowFullScreen
-              />
-            </div>
-            <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
-              <iframe
-                title="Localização Insight Clínica"
-                src="https://www.google.com/maps?q=R.+Buritis,+105+-+Loja+02+-+Horto,+Ipatinga+-+MG,+35160-321&output=embed"
+                src="https://maps.google.com/maps?q=Rua%20Benedito%20Onecimo%20Martins,%2023%20Vila%20Bom%20Jesus%20Coronel%20Fabriciano&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 loading="lazy"
@@ -231,7 +207,6 @@ function Contato() {
               />
             </div>
           </motion.div>
-
           {/* Formulário */}
           <motion.form
             initial={{ opacity: 0, y: 16 }}
