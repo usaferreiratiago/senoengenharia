@@ -157,13 +157,13 @@ function Funcionarios() {
                         src={f.img}
                         alt={`Foto de ${f.name}`}
                         loading="lazy"
-                        className="aspect-[4/3] w-full object-cover transition duration-500 transform hover:scale-[1.03]"
+                        className="aspect-4/3 w-full object-cover transition duration-500 transform hover:scale-[1.03]"
                       />
                     </div>
                   </div>
 
                   {/* Número de Índice */}
-                  <div className="col-span-3 md:col-span-1 order-1 md:order-none mt-2 md:mt-0">
+                  <div className="col-span-3 md:col-span-1 order-1 md:order-0 mt-2 md:mt-0">
                     <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono font-semibold">
                       {formattedIndex}
                     </div>
@@ -183,7 +183,7 @@ function Funcionarios() {
                   </div>
 
                   {/* Ano de Entrada */}
-                  <div className="col-span-9 md:col-span-2 flex items-center justify-end md:justify-start order-2 md:order-none mt-2 md:mt-0 w-full md:w-auto">
+                  <div className="col-span-9 md:col-span-2 flex items-center justify-end md:justify-start order-2 md:order-0 mt-2 md:mt-0 w-full md:w-auto">
                     <div className="font-display text-xl sm:text-2xl font-medium text-zinc-400 dark:text-zinc-500 font-mono">
                       {f.year}
                     </div>
