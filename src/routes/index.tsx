@@ -7,14 +7,14 @@ import heroImg from "@/assets/hero-construction.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Seno Engenharia — 40 anos construindo no Vale do Aço" },
+      { title: "Seno Engenharia — +40 anos construindo no Vale do Aço" },
       {
         name: "description",
         content:
           "Projetos, obras civis e gerenciamento de construção em Coronel Fabriciano/MG. CNPJ 20.853.842/0001-01.",
       },
       { property: "og:title", content: "Seno Engenharia — Projetos e Construções" },
-      { property: "og:description", content: "40 anos de engenharia em Coronel Fabriciano/MG." },
+      { property: "og:description", content: "+40 anos de engenharia em Coronel Fabriciano/MG." },
       { property: "og:image", content: heroImg },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -123,7 +123,7 @@ function Home() {
         <div className="relative border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
           <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-zinc-200 dark:divide-zinc-800 md:grid-cols-4">
             {[
-              { k: "40", l: "anos de mercado" },
+              { k: "+40", l: "anos de mercado" },
               { k: "200+", l: "obras entregues" },
               { k: "MG", l: "Vale do Aço" },
               { k: "100%", l: "prazo cumprido" },
@@ -149,7 +149,7 @@ function Home() {
               to: "/sobre",
               n: "01",
               t: "Sobre",
-              d: "40 anos de engenharia honesta no Vale do Aço.",
+              d: "+40 anos de engenharia honesta no Vale do Aço.",
             },
             {
               to: "/servicos",

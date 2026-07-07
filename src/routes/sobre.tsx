@@ -15,10 +15,10 @@ export const Route = createFileRoute("/sobre")({
       {
         name: "description",
         content:
-          "Há 40 anos a Seno Engenharia projeta e constrói no Vale do Aço, em Coronel Fabriciano/MG.",
+          "Há +40 anos a Seno Engenharia projeta e constrói no Vale do Aço, em Coronel Fabriciano/MG.",
       },
       { property: "og:title", content: "Sobre a Seno Engenharia" },
-      { property: "og:description", content: "40 anos de engenharia honesta no Vale do Aço." },
+      { property: "og:description", content: "+40 anos de engenharia honesta no Vale do Aço." },
     ],
   }),
   component: Sobre,
