@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PageHeader } from "@/components/page-header";
 
 // Importação da logo utilizando o caminho relativo do projeto
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/obras")({
   component: Obras,
 });
 
-// Mock atualizado utilizando os arrays de imagens específicos de cada pasta
+// Mock utilizando os arrays de imagens específicos de cada pasta
 const allProjects = [
   {
     images: [p1_f1, p1_f2, p1_f3, p1_f4],
@@ -112,9 +112,21 @@ const allProjects = [
 
 const ITEMS_PER_PAGE = 5;
 
-// Componente isolado para o carrossel de fotos de cada obra
+// Componente isolado com autoplay para o carrossel de fotos
 function ProjectCarousel({ images, title }: { images: string[]; title: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Efeito para transição de slides automática (Autoplay)
+  useEffect(() => {
+    if (isHovered) return; // Pausa o autoplay quando o mouse está por cima
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, 2000); // Passa a imagem a cada 2 segundos
+
+    return () => clearInterval(interval);
+  }, [images.length, isHovered]);
 
   const nextSlide = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -127,7 +139,11 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
   };
 
   return (
-    <div className="relative overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900 aspect-4/3 group">
+    <div
+      className="relative overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900 aspect-4/3 group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Imagem com Animação */}
       <div className="w-full h-full relative">
         <AnimatePresence mode="wait">
@@ -248,7 +264,7 @@ function Obras() {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                   className="grid grid-cols-12 items-center gap-4 sm:gap-6 bg-white dark:bg-zinc-950 py-6 sm:py-8 border-b border-zinc-100 dark:border-zinc-900 last:border-0"
                 >
-                  {/* Coluna da Imagem com o Carrossel das Pastas Atualizadas */}
+                  {/* Coluna da Imagem com o Carrossel e Autoplay */}
                   <div className="col-span-12 md:col-span-5">
                     <ProjectCarousel images={p.images} title={p.title} />
                   </div>
