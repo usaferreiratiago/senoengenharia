@@ -26,7 +26,7 @@ const testimonials = [
   {
     q: "A Seno entregou nossa fábrica três semanas antes do prazo. Em 30 anos de indústria, nunca vi obra correr tão limpa.",
     a: "Roberto Mendes",
-    r: "Diretor Industrial · Vale do Aço",
+    r: "Diretor(a) Industrial · Vale do Aço",
   },
   {
     q: "Construíram a casa da nossa família com um cuidado que parece raro hoje. Cada detalhe foi conversado, cada prazo cumprido.",
@@ -36,7 +36,7 @@ const testimonials = [
   {
     q: "Profissionalismo do orçamento à última vistoria. Recomendo de olhos fechados para qualquer obra séria.",
     a: "Carlos Drummond",
-    r: "Síndico · Coronel Fabriciano",
+    r: "Síndico(a) · Coronel Fabriciano",
   },
 ];
 
