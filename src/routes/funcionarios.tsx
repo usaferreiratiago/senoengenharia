@@ -38,7 +38,7 @@ export const Route = createFileRoute("/equipe")({
 const allStaff = [
   {
     img: f1,
-    name: "Sérgio Reis",
+    name: "Gerson",
     role: "Diretor Executivo & Engenheiro Civil",
     info: "Fundador · Especialista em Estruturas",
     year: "1986",
