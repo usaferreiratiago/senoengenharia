@@ -1,29 +1,47 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone, ArrowLeft, MessageCircle } from "lucide-react";
+import {
+  ArrowUpRight,
+  Mail,
+  MapPin,
+  Phone,
+  ArrowLeft,
+  MessageCircle,
+  Linkedin,
+  Instagram,
+  Clock,
+} from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 
 // Importação da logo utilizando o caminho relativo do projeto
-import logoImg from "@/assets/senoengenharia.png";
+import logoImg from "@/assets/insightclinica.png";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Seno Engenharia" },
+      { title: "Contato — Insight Clínica" },
       {
         name: "description",
         content:
-          "Solicite orçamento ou tire dúvidas com a equipe da Seno Engenharia em Coronel Fabriciano/MG.",
+          "Solicite orçamento ou tire dúvidas com a equipe da Insight Clínica em Coronel Fabriciano/MG.",
       },
-      { property: "og:title", content: "Fale com a Seno Engenharia" },
-      { property: "og:description", content: "Solicite orçamento ou tire dúvidas." },
+      { property: "og:title", content: "Fale com a Insight Clínica" },
+      {
+        property: "og:description",
+        content: "Solicite orçamento ou tire dúvidas.",
+      },
     ],
   }),
   component: Contato,
 });
 
-type FormValues = { nome: string; email: string; telefone: string; mensagem: string };
+type FormValues = {
+  nome: string;
+  email: string;
+  telefone: string;
+  mensagem: string;
+};
 
 function Contato() {
   const { register, handleSubmit, reset, formState, getValues } = useForm<FormValues>();
@@ -33,7 +51,7 @@ function Contato() {
     const body = encodeURIComponent(
       `Nome: ${data.nome}\nEmail: ${data.email}\nTelefone: ${data.telefone}\n\nMENSAGEM:\n${data.mensagem}`,
     );
-    window.location.href = `mailto:contato@senoengenharia.com.br?subject=Contato%20pelo%20site&body=${body}`;
+    window.location.href = `mailto:contato@insightclinica.com.br?subject=Contato%20pelo%20site&body=${body}`;
     reset();
   };
 
@@ -48,7 +66,7 @@ function Contato() {
       const text = encodeURIComponent(
         `Olá! Gostaria de fazer um contato comercial.\n\n*Nome:* ${data.nome}\n*E-mail:* ${data.email}\n*Telefone:* ${data.telefone}\n\n*Mensagem:* ${data.mensagem}`,
       );
-      window.open(`https://wa.me/553100000000?text=${text}`, "_blank");
+      window.open(`https://wa.me/5531984191612?text=${text}`, "_blank");
       reset();
     }
   };
@@ -74,19 +92,19 @@ function Contato() {
             transition={{ duration: 0.5 }}
             className="flex justify-center sm:justify-start"
           >
-            <img
+            {/* <img
               src={logoImg}
-              alt="Seno Engenharia Logo"
+              alt="Insight Clínica Logo"
               className="h-10 sm:h-12 w-auto object-contain transition-all duration-300 dark:brightness-110 dark:contrast-105"
-            />
+            /> */}
           </motion.div>
         </div>
       </div>
 
       <PageHeader
         eyebrow="— 05 / Contato"
-        title="Tem um projeto em mente? Vamos conversar."
-        intro="Conte um pouco sobre sua obra. Respondemos em até dois dias úties."
+        title="Está buscando apoio psicológico? Vamos conversar."
+        intro="Conte um pouco sobre o que você está vivendo. Respondemos em até dois dias úteis."
       />
 
       <section className="py-12 sm:py-16 lg:py-24">
@@ -101,7 +119,7 @@ function Contato() {
           >
             <div className="space-y-6">
               <a
-                href="tel:+55313841-1290"
+                href="tel:+5531988191660"
                 className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6 w-full"
               >
                 <Phone
@@ -119,7 +137,7 @@ function Contato() {
               </a>
 
               <a
-                href="mailto:contato@senoengenharia.com.br"
+                href="mailto:contato@insightclinica.com.br"
                 className="group flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6 w-full"
               >
                 <Mail
@@ -136,12 +154,28 @@ function Contato() {
                 </div>
               </a>
 
+              {/* Bloco de Horário de Funcionamento */}
+              <div className="flex items-start gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6 w-full">
+                <Clock
+                  className="mt-1 h-5 w-5 shrink-0 text-orange-700 dark:text-orange-500"
+                  strokeWidth={1.5}
+                />
+                <div className="min-w-0">
+                  <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
+                    Horário de Atendimento
+                  </div>
+                  <div className="mt-1 font-display text-base sm:text-lg text-zinc-900 dark:text-zinc-200 space-y-0.5">
+                    <p>Segunda a Sexta: 08:00h às 17:00h</p>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex items-start gap-4 w-full">
                 <MapPin
                   className="mt-1 h-5 w-5 shrink-0 text-orange-700 dark:text-orange-500"
                   strokeWidth={1.5}
                 />
-                <div className="min-w-0 break-words">
+                <div className="min-w-0 wrap-break-word">
                   <div className="text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
                     Endereço
                   </div>
@@ -160,10 +194,34 @@ function Contato() {
             </div>
 
             {/* Container do Mapa corrigido com link público funcional */}
-            <div className="aspect-[4/3] w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
+            <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
               <iframe
-                title="Localização Seno Engenharia"
-                src="https://maps.google.com/maps?q=Rua%20Benedito%20Onecimo%20Martins,%2023%20Vila%20Bom%20Jesus%20Coronel%20Fabriciano&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                title="Localização Insight Clínica"
+                src="https://www.google.com/maps?q=Rua+Rubens+Siqueira+Maia+599,+Coronel+Fabriciano,+MG&output=embed"
+                width="100%"
+                height="100%"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-full w-full border-0 dark:invert dark:grayscale dark:opacity-80 transition-all duration-300"
+                allowFullScreen
+              />
+            </div>
+            <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
+              <iframe
+                title="Localização Insight Clínica"
+                src="https://www.google.com/maps?q=Av.+Castelo+Branco,+762+-+Horto,+Ipatinga+-+MG,+35160-294&output=embed"
+                width="100%"
+                height="100%"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-full w-full border-0 dark:invert dark:grayscale dark:opacity-80 transition-all duration-300"
+                allowFullScreen
+              />
+            </div>
+            <div className="aspect-4/3 w-full overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 rounded-sm">
+              <iframe
+                title="Localização Insight Clínica"
+                src="https://www.google.com/maps?q=R.+Buritis,+105+-+Loja+02+-+Horto,+Ipatinga+-+MG,+35160-321&output=embed"
                 width="100%"
                 height="100%"
                 loading="lazy"
@@ -214,34 +272,66 @@ function Contato() {
               />
             </Field>
 
-            <Field label="Sobre seu projeto" error={formState.errors.mensagem?.message}>
+            <Field
+              label="Conte um pouco sobre o que você está vivendo"
+              error={formState.errors.mensagem?.message}
+            >
               <textarea
                 rows={6}
-                {...register("mensagem", { required: "Conte um pouco do que precisa" })}
+                {...register("mensagem", {
+                  required: "Conte um pouco do que precisa",
+                })}
                 className="w-full rounded-sm border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-950 focus:border-orange-700 focus:outline-hidden resize-none dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:border-orange-500"
               />
             </Field>
 
             {/* Grupo de Botões de Envio (E-mail e WhatsApp) */}
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              {/* Botão Principal: Enviar por E-mail */}
-              <button
-                type="submit"
-                className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-zinc-900 dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-white dark:text-zinc-950 transition-colors hover:bg-orange-700 dark:hover:bg-orange-500 dark:hover:text-white md:w-auto shadow-sm cursor-pointer"
-              >
-                Enviar por e-mail
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
+            <div className="space-y-3">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                {/* Botão Principal: Enviar por E-mail */}
+                <button
+                  type="submit"
+                  className="group inline-flex w-full items-center justify-center gap-3 rounded-sm bg-zinc-900 dark:bg-zinc-100 px-6 py-4 text-sm font-medium text-white dark:text-zinc-950 transition-colors hover:bg-orange-700 dark:hover:bg-orange-500 dark:hover:text-white md:w-auto shadow-sm cursor-pointer"
+                >
+                  Enviar por e-mail
+                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </button>
 
-              {/* Novo Botão: Enviar via WhatsApp */}
-              <button
-                type="button"
-                onClick={handleWhatsAppClick}
-                className="group inline-flex w-full items-center justify-center gap-3 rounded-sm border border-emerald-600/30 bg-emerald-50/50 hover:bg-emerald-600 dark:border-emerald-500/20 dark:bg-emerald-950/20 dark:hover:bg-emerald-600 px-6 py-4 text-sm font-medium text-emerald-700 dark:text-emerald-400 hover:text-white dark:hover:text-white transition-all md:w-auto shadow-xs cursor-pointer"
-              >
-                <MessageCircle className="h-4 w-4 fill-current" />
-                Conversar no WhatsApp
-              </button>
+                {/* Botão: Enviar via WhatsApp */}
+                <button
+                  type="button"
+                  onClick={handleWhatsAppClick}
+                  className="group inline-flex w-full items-center justify-center gap-3 rounded-sm border border-emerald-600/30 bg-emerald-50/50 hover:bg-emerald-600 dark:border-emerald-500/20 dark:bg-emerald-950/20 dark:hover:bg-emerald-600 px-6 py-4 text-sm font-medium text-emerald-700 dark:text-emerald-400 hover:text-white dark:hover:text-white transition-all md:w-auto shadow-xs cursor-pointer"
+                >
+                  <MessageCircle className="h-4 w-4 fill-current" />
+                  Conversar no WhatsApp
+                </button>
+              </div>
+
+              {/* Novos Botões de Redes Sociais */}
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center pt-2 border-t border-zinc-200 dark:border-zinc-800">
+                {/* Botão: LinkedIn */}
+                <a
+                  href="https://linkedin.com/company/sua-clinica" /* Substitua com o link correto */
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex w-full items-center justify-center gap-3 rounded-sm border border-blue-600/30 bg-blue-50/50 hover:bg-blue-600 dark:border-blue-500/20 dark:bg-blue-950/20 dark:hover:bg-blue-600 px-6 py-3 text-sm font-medium text-blue-700 dark:text-blue-400 hover:text-white dark:hover:text-white transition-all md:w-auto cursor-pointer"
+                >
+                  <Linkedin className="h-4 w-4" />
+                  LinkedIn
+                </a>
+
+                {/* Botão: Instagram */}
+                <a
+                  href="https://instagram.com/psicologashirleyoficial" /* Substitua com o link correto */
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex w-full items-center justify-center gap-3 rounded-sm border border-pink-600/30 bg-pink-50/50 hover:bg-pink-600 dark:border-pink-500/20 dark:bg-pink-950/20 dark:hover:bg-pink-600 px-6 py-3 text-sm font-medium text-pink-700 dark:text-pink-400 hover:text-white dark:hover:text-white transition-all md:w-auto cursor-pointer"
+                >
+                  <Instagram className="h-4 w-4" />
+                  Instagram
+                </a>
+              </div>
             </div>
           </motion.form>
         </div>
