@@ -123,7 +123,7 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 5000); // Passa a imagem a cada 2 segundos
+    }, 5000); // Passa a imagem a cada 5 segundos
 
     return () => clearInterval(interval);
   }, [images.length, isHovered]);
