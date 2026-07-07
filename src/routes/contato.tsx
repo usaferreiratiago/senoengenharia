@@ -44,7 +44,7 @@ type FormValues = {
 };
 
 function Contato() {
-  const { register, handleSubmit, reset, formState, getValues } = useForm<FormValues>();
+  const { register, handleSubmit, reset, formState, getValues, trigger } = useForm<FormValues>();
 
   // Envio padrão por E-mail
   const onSubmitEmail = (data: FormValues) => {
@@ -58,10 +58,10 @@ function Contato() {
   // Envio alternativo por WhatsApp
   const handleWhatsAppClick = async () => {
     // Dispara a validação do formulário nativamente antes de prosseguir
-    const isValid = await handleSubmit(() => {})();
+    const isValid = await trigger();
 
     // Se o formulário estiver válido, extrai os dados e envia para o WhatsApp
-    if (formState.isValid || isValid !== false) {
+    if (isValid) {
       const data = getValues();
       const text = encodeURIComponent(
         `Olá! Gostaria de fazer um contato comercial.\n\n*Nome:* ${data.nome}\n*E-mail:* ${data.email}\n*Telefone:* ${data.telefone}\n\n*Mensagem:* ${data.mensagem}`,
