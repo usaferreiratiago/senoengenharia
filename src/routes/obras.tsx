@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import p1 from "@/assets/project-1.jpg";
@@ -30,66 +30,137 @@ export const Route = createFileRoute("/obras")({
   component: Obras,
 });
 
-// Mock com a lista de obras
+// Mock atualizado com um array de 4 imagens para cada obra
 const allProjects = [
   {
-    img: p1,
+    images: [p1, p2, p3, p1],
     title: "Residencial Jardim das Acácias 1",
     type: "Residencial · Coronel Fabriciano",
     year: "2026",
   },
-  { img: p2, title: "Edifício Comercial Centro", type: "Comercial · Ipatinga", year: "2026" },
-  { img: p3, title: "Galpão Industrial Vale do Aço", type: "Industrial · Timóteo", year: "2025" },
-  { img: p1, title: "Residencial Horto Classic", type: "Residencial · Ipatinga", year: "2025" },
+  { images: [p2, p3, p1, p2], title: "Edifício Comercial Centro", type: "Comercial · Ipatinga", year: "2026" },
+  { images: [p3, p1, p2, p3], title: "Galpão Industrial Vale do Aço", type: "Industrial · Timóteo", year: "2025" },
+  { images: [p1, p2, p3, p1], title: "Residencial Horto Classic", type: "Residencial · Ipatinga", year: "2025" },
   {
-    img: p2,
+    images: [p2, p3, p1, p2],
     title: "Centro Logístico Norte",
     type: "Industrial · Santana do Paraíso",
     year: "2025",
   },
   {
-    img: p3,
+    images: [p3, p1, p2, p3],
     title: "Edifício Prime Offices",
     type: "Comercial · Coronel Fabriciano",
     year: "2025",
   },
-  { img: p1, title: "Condomínio Alphaville Vale", type: "Residencial · Timóteo", year: "2024" },
-  { img: p2, title: "Clínica Integrada Ipatinga", type: "Comercial · Ipatinga", year: "2024" },
-  { img: p3, title: "Expansão Industrial Aperam", type: "Industrial · Timóteo", year: "2024" },
-  { img: p1, title: "Vivendas do Lago", type: "Residencial · Coronel Fabriciano", year: "2024" },
-  { img: p2, title: "Supermercado DuVale", type: "Comercial · Santana do Paraíso", year: "2023" },
+  { images: [p1, p2, p3, p1], title: "Condomínio Alphaville Vale", type: "Residencial · Timóteo", year: "2024" },
+  { images: [p2, p3, p1, p2], title: "Clínica Integrada Ipatinga", type: "Comercial · Ipatinga", year: "2024" },
+  { images: [p3, p1, p2, p3], title: "Expansão Industrial Aperam", type: "Industrial · Timóteo", year: "2024" },
+  { images: [p1, p2, p3, p1], title: "Vivendas do Lago", type: "Residencial · Coronel Fabriciano", year: "2024" },
+  { images: [p2, p3, p1, p2], title: "Supermercado DuVale", type: "Comercial · Santana do Paraíso", year: "2023" },
   {
-    img: p3,
+    images: [p3, p1, p2, p3],
     title: "Sede Administrativa Cenibra",
     type: "Industrial · Belo Oriente",
     year: "2023",
   },
-  { img: p1, title: "Residencial Bela Vista", type: "Residencial · Ipatinga", year: "2023" },
-  { img: p2, title: "Shopping Vale Corporate", type: "Comercial · Ipatinga", year: "2023" },
+  { images: [p1, p2, p3, p1], title: "Residencial Bela Vista", type: "Residencial · Ipatinga", year: "2023" },
+  { images: [p2, p3, p1, p2], title: "Shopping Vale Corporate", type: "Comercial · Ipatinga", year: "2023" },
   {
-    img: p3,
+    images: [p3, p1, p2, p3],
     title: "Galpão Metalúrgica Fabriciano",
     type: "Industrial · Coronel Fabriciano",
     year: "2022",
   },
-  { img: p1, title: "Residencial Bromélias", type: "Residencial · Timóteo", year: "2022" },
+  { images: [p1, p2, p3, p1], title: "Residencial Bromélias", type: "Residencial · Timóteo", year: "2022" },
   {
-    img: p2,
+    images: [p2, p3, p1, p2],
     title: "Centro Médico Fabriciano",
     type: "Comercial · Coronel Fabriciano",
     year: "2022",
   },
   {
-    img: p3,
+    images: [p3, p1, p2, p3],
     title: "Usina Fotovoltaica Paraíso",
     type: "Industrial · Santana do Paraíso",
     year: "2021",
   },
-  { img: p1, title: "Mansão Belvedere", type: "Residencial · Ipatinga", year: "2021" },
-  { img: p2, title: "Hotel Premium Vale", type: "Comercial · Timóteo", year: "2021" },
+  { images: [p1, p2, p3, p1], title: "Mansão Belvedere", type: "Residencial · Ipatinga", year: "2021" },
+  { images: [p2, p3, p1, p2], title: "Hotel Premium Vale", type: "Comercial · Timóteo", year: "2021" },
 ];
 
 const ITEMS_PER_PAGE = 5;
+
+// Componente isolado para o carrossel de fotos de cada obra
+function ProjectCarousel({ images, title }: { images: string[]; title: string }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextSlide = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
+  const prevSlide = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  return (
+    <div className="relative overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900 aspect-4/3 group">
+      {/* Imagem com Animação de Fade/Slide Simples */}
+      <div className="w-full h-full relative">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentIndex}
+            src={images[currentIndex]}
+            alt={`${title} - Foto ${currentIndex + 1}`}
+            initial={{ opacity: 0.8 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0.8 }}
+            transition={{ duration: 0.3 }}
+            loading="lazy"
+            className="w-full h-full object-cover transition duration-500 transform group-hover:scale-[1.02]"
+          />
+        </AnimatePresence>
+      </div>
+
+      {/* Setas de navegação (Visíveis ao passar o mouse) */}
+      <div className="absolute inset-0 flex items-center justify-between p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <button
+          onClick={prevSlide}
+          className="p-1.5 rounded-full bg-white/80 dark:bg-zinc-950/80 text-zinc-800 dark:text-zinc-200 hover:bg-white dark:hover:bg-zinc-950 transition shadow-sm pointer-events-auto cursor-pointer"
+          aria-label="Foto anterior"
+        >
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="p-1.5 rounded-full bg-white/80 dark:bg-zinc-950/80 text-zinc-800 dark:text-zinc-200 hover:bg-white dark:hover:bg-zinc-950 transition shadow-sm pointer-events-auto cursor-pointer"
+          aria-label="Próxima foto"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+
+      {/* Indicadores de bolinha (Dots) */}
+      <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex gap-1.5 bg-black/20 dark:bg-white/10 backdrop-blur-xs px-2 py-1 rounded-full">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(index);
+            }}
+            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+              currentIndex === index ? "w-3 bg-white" : "w-1.5 bg-white/50"
+            }`}
+            aria-label={`Ir para foto ${index + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Obras() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -160,16 +231,9 @@ function Obras() {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                   className="grid grid-cols-12 items-center gap-4 sm:gap-6 bg-white dark:bg-zinc-950 py-6 sm:py-8 border-b border-zinc-100 dark:border-zinc-900 last:border-0"
                 >
-                  {/* Coluna da Imagem */}
+                  {/* Coluna da Imagem Alterada para Carrossel */}
                   <div className="col-span-12 md:col-span-5">
-                    <div className="overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900">
-                      <img
-                        src={p.img}
-                        alt={p.title}
-                        loading="lazy"
-                        className="aspect-4/3 w-full object-cover transition duration-500 transform hover:scale-[1.03]"
-                      />
-                    </div>
+                    <ProjectCarousel images={p.images} title={p.title} />
                   </div>
 
                   {/* Coluna do Número */}
