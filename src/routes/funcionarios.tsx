@@ -39,7 +39,7 @@ const allStaff = [
   {
     img: f1,
     name: "Gerson",
-    role: "Diretor Executivo & Engenheiro Civil",
+    role: "Diretor Executivo",
     info: "CEO & Fundador · Especialista em Estruturas",
     year: "1986",
   },
