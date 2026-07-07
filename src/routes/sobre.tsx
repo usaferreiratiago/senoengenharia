@@ -76,7 +76,7 @@ function Sobre() {
               src={aboutImg}
               alt="Equipe Seno revisando projetos"
               loading="lazy"
-              className="aspect-[4/3] w-full object-cover rounded-sm shadow-sm dark:opacity-90"
+              className="aspect-4/3 w-full object-cover rounded-sm shadow-sm dark:opacity-90"
             />
           </motion.div>
 
@@ -107,7 +107,7 @@ function Sobre() {
               ].map((i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300 font-medium break-words"
+                  className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300 font-medium wrap-break-word"
                 >
                   {/* Ícone de check usando a cor terracota/laranja consistente com as outras páginas */}
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-orange-700 dark:text-orange-500" />

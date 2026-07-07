@@ -167,13 +167,13 @@ function Obras() {
                         src={p.img}
                         alt={p.title}
                         loading="lazy"
-                        className="aspect-[4/3] w-full object-cover transition duration-500 transform hover:scale-[1.03]"
+                        className="aspect-4/3 w-full object-cover transition duration-500 transform hover:scale-[1.03]"
                       />
                     </div>
                   </div>
 
                   {/* Coluna do Número */}
-                  <div className="col-span-3 md:col-span-1 order-1 md:order-none mt-2 md:mt-0">
+                  <div className="col-span-3 md:col-span-1 order-1 md:order-0 mt-2 md:mt-0">
                     <div className="text-xs tabular-nums tracking-widest text-zinc-400 dark:text-zinc-500 font-mono font-semibold">
                       {formattedIndex}
                     </div>
@@ -190,7 +190,7 @@ function Obras() {
                   </div>
 
                   {/* Coluna do Ano e Link */}
-                  <div className="col-span-9 md:col-span-2 flex items-center justify-between gap-4 order-2 md:order-none mt-2 md:mt-0 justify-self-end md:justify-self-auto w-full md:w-auto">
+                  <div className="col-span-9 md:col-span-2 flex items-center justify-between gap-4 order-2 md:order-0 mt-2 md:mt-0 justify-self-end md:justify-self-auto w-full md:w-auto">
                     <div className="font-display text-xl sm:text-2xl font-medium text-zinc-400 dark:text-zinc-500 font-mono">
                       {p.year}
                     </div>
