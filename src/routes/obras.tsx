@@ -2,13 +2,29 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 import { useState } from "react";
-import p1 from "@/assets/project-1.jpg";
-import p2 from "@/assets/project-2.jpg";
-import p3 from "@/assets/project-3.jpg";
 import { PageHeader } from "@/components/page-header";
 
 // Importação da logo utilizando o caminho relativo do projeto
 import logoImg from "@/assets/senoengenharia.png";
+
+// IMPORTS DAS FOTOS ORGANIZADAS POR PASTA DE OBRA
+// Obra 1
+import p1_f1 from "@/assets/obras/projeto-1/foto-1.jpg";
+import p1_f2 from "@/assets/obras/projeto-1/foto-2.jpg";
+import p1_f3 from "@/assets/obras/projeto-1/foto-3.jpg";
+import p1_f4 from "@/assets/obras/projeto-1/foto-4.jpg";
+
+// Obra 2
+import p2_f1 from "@/assets/obras/projeto-2/foto-1.jpg";
+import p2_f2 from "@/assets/obras/projeto-2/foto-2.jpg";
+import p2_f3 from "@/assets/obras/projeto-2/foto-3.jpg";
+import p2_f4 from "@/assets/obras/projeto-2/foto-4.jpg";
+
+// Obra 3
+import p3_f1 from "@/assets/obras/projeto-3/foto-1.jpg";
+import p3_f2 from "@/assets/obras/projeto-3/foto-2.jpg";
+import p3_f3 from "@/assets/obras/projeto-3/foto-3.jpg";
+import p3_f4 from "@/assets/obras/projeto-3/foto-4.jpg";
 
 // Rota adicionada explicitamente para resolver o erro do TS
 export const Route = createFileRoute("/obras")({
@@ -30,127 +46,67 @@ export const Route = createFileRoute("/obras")({
   component: Obras,
 });
 
-// Mock atualizado com um array de 4 imagens para cada obra
+// Mock atualizado utilizando os arrays de imagens específicos de cada pasta
 const allProjects = [
   {
-    images: [p1, p2, p3, p1],
+    images: [p1_f1, p1_f2, p1_f3, p1_f4],
     title: "Residencial Jardim das Acácias 1",
     type: "Residencial · Coronel Fabriciano",
     year: "2026",
   },
   {
-    images: [p2, p3, p1, p2],
+    images: [p2_f1, p2_f2, p2_f3, p2_f4],
     title: "Edifício Comercial Centro",
     type: "Comercial · Ipatinga",
     year: "2026",
   },
   {
-    images: [p3, p1, p2, p3],
+    images: [p3_f1, p3_f2, p3_f3, p3_f4],
     title: "Galpão Industrial Vale do Aço",
     type: "Industrial · Timóteo",
     year: "2025",
   },
   {
-    images: [p1, p2, p3, p1],
+    images: [p1_f1, p1_f2, p1_f3, p1_f4],
     title: "Residencial Horto Classic",
     type: "Residencial · Ipatinga",
     year: "2025",
   },
   {
-    images: [p2, p3, p1, p2],
+    images: [p2_f1, p2_f2, p2_f3, p2_f4],
     title: "Centro Logístico Norte",
     type: "Industrial · Santana do Paraíso",
     year: "2025",
   },
   {
-    images: [p3, p1, p2, p3],
+    images: [p3_f1, p3_f2, p3_f3, p3_f4],
     title: "Edifício Prime Offices",
     type: "Comercial · Coronel Fabriciano",
     year: "2025",
   },
   {
-    images: [p1, p2, p3, p1],
+    images: [p1_f1, p1_f2, p1_f3, p1_f4],
     title: "Condomínio Alphaville Vale",
     type: "Residencial · Timóteo",
     year: "2024",
   },
   {
-    images: [p2, p3, p1, p2],
+    images: [p2_f1, p2_f2, p2_f3, p2_f4],
     title: "Clínica Integrada Ipatinga",
     type: "Comercial · Ipatinga",
     year: "2024",
   },
   {
-    images: [p3, p1, p2, p3],
+    images: [p3_f1, p3_f2, p3_f3, p3_f4],
     title: "Expansão Industrial Aperam",
     type: "Industrial · Timóteo",
     year: "2024",
   },
   {
-    images: [p1, p2, p3, p1],
+    images: [p1_f1, p1_f2, p1_f3, p1_f4],
     title: "Vivendas do Lago",
     type: "Residencial · Coronel Fabriciano",
     year: "2024",
-  },
-  {
-    images: [p2, p3, p1, p2],
-    title: "Supermercado DuVale",
-    type: "Comercial · Santana do Paraíso",
-    year: "2023",
-  },
-  {
-    images: [p3, p1, p2, p3],
-    title: "Sede Administrativa Cenibra",
-    type: "Industrial · Belo Oriente",
-    year: "2023",
-  },
-  {
-    images: [p1, p2, p3, p1],
-    title: "Residencial Bela Vista",
-    type: "Residencial · Ipatinga",
-    year: "2023",
-  },
-  {
-    images: [p2, p3, p1, p2],
-    title: "Shopping Vale Corporate",
-    type: "Comercial · Ipatinga",
-    year: "2023",
-  },
-  {
-    images: [p3, p1, p2, p3],
-    title: "Galpão Metalúrgica Fabriciano",
-    type: "Industrial · Coronel Fabriciano",
-    year: "2022",
-  },
-  {
-    images: [p1, p2, p3, p1],
-    title: "Residencial Bromélias",
-    type: "Residencial · Timóteo",
-    year: "2022",
-  },
-  {
-    images: [p2, p3, p1, p2],
-    title: "Centro Médico Fabriciano",
-    type: "Comercial · Coronel Fabriciano",
-    year: "2022",
-  },
-  {
-    images: [p3, p1, p2, p3],
-    title: "Usina Fotovoltaica Paraíso",
-    type: "Industrial · Santana do Paraíso",
-    year: "2021",
-  },
-  {
-    images: [p1, p2, p3, p1],
-    title: "Mansão Belvedere",
-    type: "Residencial · Ipatinga",
-    year: "2021",
-  },
-  {
-    images: [p2, p3, p1, p2],
-    title: "Hotel Premium Vale",
-    type: "Comercial · Timóteo",
-    year: "2021",
   },
 ];
 
@@ -172,7 +128,7 @@ function ProjectCarousel({ images, title }: { images: string[]; title: string })
 
   return (
     <div className="relative overflow-hidden rounded-sm bg-zinc-100 dark:bg-zinc-900 aspect-4/3 group">
-      {/* Imagem com Animação de Fade/Slide Simples */}
+      {/* Imagem com Animação */}
       <div className="w-full h-full relative">
         <AnimatePresence mode="wait">
           <motion.img
@@ -231,7 +187,6 @@ function Obras() {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(allProjects.length / ITEMS_PER_PAGE);
 
-  // Calcula quais projetos exibir na página atual
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const currentProjects = allProjects.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
@@ -248,7 +203,6 @@ function Obras() {
       {/* Barra superior de ações (Voltar + Logo) */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         <div className="flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-100 dark:border-zinc-900 pb-6">
-          {/* Botão Voltar para Tela Inicial */}
           <Link
             to="/"
             className="group inline-flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors py-2 sm:py-0"
@@ -257,7 +211,6 @@ function Obras() {
             Voltar para o início
           </Link>
 
-          {/* Logo fixa colorida */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -281,7 +234,6 @@ function Obras() {
 
       <section className="py-12 sm:py-16 lg:py-24 bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors duration-300">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          {/* Listagem de Obras com divisores adaptáveis */}
           <div className="space-y-px bg-zinc-100 dark:bg-zinc-900">
             {currentProjects.map((p, i) => {
               const globalIndex = startIndex + i + 1;
@@ -296,7 +248,7 @@ function Obras() {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                   className="grid grid-cols-12 items-center gap-4 sm:gap-6 bg-white dark:bg-zinc-950 py-6 sm:py-8 border-b border-zinc-100 dark:border-zinc-900 last:border-0"
                 >
-                  {/* Coluna da Imagem Alterada para Carrossel */}
+                  {/* Coluna da Imagem com o Carrossel das Pastas Atualizadas */}
                   <div className="col-span-12 md:col-span-5">
                     <ProjectCarousel images={p.images} title={p.title} />
                   </div>
