@@ -40,7 +40,7 @@ const allStaff = [
     img: f1,
     name: "Gerson",
     role: "Diretor(a) Executivo",
-    info: "CEO & Fundador · Especialista em Estruturas",
+    info: "CEO & Fundador(a) · Especialista em Estruturas",
     year: "1986",
   },
   {
