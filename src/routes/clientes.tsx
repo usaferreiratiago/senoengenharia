@@ -91,9 +91,12 @@ function Clientes() {
               >
                 <div>
                   {/* Ícone de aspas usando a cor terracota/laranja consistente com a Home */}
-                  <Quote className="h-8 w-8 text-orange-700 dark:text-orange-500 shrink-0" strokeWidth={1.2} />
+                  <Quote
+                    className="h-8 w-8 text-orange-700 dark:text-orange-500 shrink-0"
+                    strokeWidth={1.2}
+                  />
 
-                  <blockquote className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 break-words">
+                  <blockquote className="mt-6 sm:mt-8 text-base sm:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 wrap-break-word">
                     "{t.q}"
                   </blockquote>
                 </div>
@@ -102,7 +105,7 @@ function Clientes() {
                   <div className="font-heading text-base font-medium text-zinc-900 dark:text-zinc-50 truncate">
                     {t.a}
                   </div>
-                  <div className="mt-1 text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 break-words">
+                  <div className="mt-1 text-xs uppercase tracking-widest text-zinc-500 dark:text-zinc-400 wrap-break-word">
                     {t.r}
                   </div>
                 </figcaption>
